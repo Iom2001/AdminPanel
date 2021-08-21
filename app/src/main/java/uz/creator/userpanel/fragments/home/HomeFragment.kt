@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import uz.creator.adminpanel.R
 import uz.creator.adminpanel.databinding.FragmentHomeBinding
 class HomeFragment : Fragment() {
@@ -14,7 +15,11 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentHomeBinding.inflate(layoutInflater)
-
+       binding.cardadd.setOnClickListener{
+           findNavController().navigate(R.id.action_homeFragment_to_newAddElonFragment)
+       }
         return binding.root
     }
+
+
 }

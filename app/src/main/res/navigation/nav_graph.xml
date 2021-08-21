@@ -28,11 +28,20 @@
         android:id="@+id/homeFragment"
         android:name="uz.creator.userpanel.fragments.home.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_newAddElonFragment"
+            app:destination="@id/newAddElonFragment" />
+    </fragment>
     <fragment
         android:id="@+id/elonFragment"
         android:name="uz.creator.userpanel.fragments.elon.ElonFragment"
         android:label="fragment_elon"
         tools:layout="@layout/fragment_elon" />
+    <fragment
+        android:id="@+id/newAddElonFragment"
+        android:name="uz.creator.userpanel.fragments.home._addElon.NewAddElonFragment"
+        android:label="fragment_new_add_elon"
+        tools:layout="@layout/fragment_new_add_elon" />
 
 </navigation>

@@ -1,20 +1,20 @@
 {
   "project_info": {
-    "project_number": "573679226576",
-    "project_id": "adminpanel",
-    "storage_bucket": "maklerxstar.appspot.com"
+    "project_number": "713276782481",
+    "project_id": "admin-panel-494d2",
+    "storage_bucket": "admin-panel-494d2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:573679226576:android:39fe8426c0fe2612db58d5",
+        "mobilesdk_app_id": "1:713276782481:android:2bf4015384a2ed62320c30",
         "android_client_info": {
           "package_name": "uz.creator.adminpanel"
         }
       },
       "oauth_client": [
         {
-          "client_id": "573679226576-s262hi6kv2hc2beru7hjbt4drpng1dim.apps.googleusercontent.com",
+          "client_id": "713276782481-bi7p572pmdn1355mjrklavl0ush56i30.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "uz.creator.adminpanel",
@@ -22,20 +22,20 @@
           }
         },
         {
-          "client_id": "573679226576-rkbdtalblgegpftksde00dsse90om7b2.apps.googleusercontent.com",
+          "client_id": "713276782481-a572nm7h6ciif9f36lvs3ip14oskuakv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAcGm0cYbE-_LvoMTiVzSTXXsficPMtLF8"
+          "current_key": "AIzaSyCUUkj7K54wbdUZZ8sPv3JrrXTVJhBURh8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "573679226576-rkbdtalblgegpftksde00dsse90om7b2.apps.googleusercontent.com",
+              "client_id": "713276782481-a572nm7h6ciif9f36lvs3ip14oskuakv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
