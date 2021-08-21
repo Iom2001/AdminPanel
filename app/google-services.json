@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "573679226576",
+    "project_id": "maklerxstar",
+    "storage_bucket": "maklerxstar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573679226576:android:39fe8426c0fe2612db58d5",
+        "android_client_info": {
+          "package_name": "uz.creator.maklerxstar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "573679226576-s262hi6kv2hc2beru7hjbt4drpng1dim.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uz.creator.maklerxstar",
+            "certificate_hash": "4842811feca17b65fd9aaf8461610660f85d9e7f"
+          }
+        },
+        {
+          "client_id": "573679226576-rkbdtalblgegpftksde00dsse90om7b2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcGm0cYbE-_LvoMTiVzSTXXsficPMtLF8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "573679226576-rkbdtalblgegpftksde00dsse90om7b2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
