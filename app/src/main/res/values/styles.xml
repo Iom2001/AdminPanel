@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="MyCheck">
+        <![CDATA[     <style name="MyCheck" parent="Theme.AppCompat.Light">         <item name="colorControlNormal">#BABAC0</item>         <item name="colorControlActivated">@color/colorPrimary</item>         <item name="minHeight">@dimen/_8sdp</item>     </style>]]></style>
+</resources>

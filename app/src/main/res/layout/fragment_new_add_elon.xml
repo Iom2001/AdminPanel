@@ -1,17 +1,197 @@
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context="uz.creator.userpanel.fragments.home._addElon.NewAddElonFragment">
+
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <com.synnapps.carouselview.CarouselView
+                    android:id="@+id/carouselView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:fillColor="#FFFFFFFF"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:pageColor="#00000000"
+                    app:radius="6dp"
+                    app:slideInterval="3000"
+                    app:strokeColor="#FF777777"
+                    app:strokeWidth="1dp">
+
+                </com.synnapps.carouselview.CarouselView>
+
+                <ImageView
+                    android:id="@+id/camera"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:background="@drawable/seller_drawabler"
+                    android:padding="10dp"
+                    app:srcCompat="@drawable/elonuchuncamera"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_marginTop="@dimen/_16sdp"
+                android:id="@+id/textfield"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:background="@color/white"
+                android:hint="Uy qavati"
+                app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_4sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_4sdp"
+                app:boxCornerRadiusTopStart="@dimen/_4sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <AutoCompleteTextView
+                    android:id="@+id/autoComplete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:background="@color/white"
+                android:hint="Uy turi"
+                android:layout_marginTop="@dimen/_6sdp"
+                app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_4sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_4sdp"
+                app:boxCornerRadiusTopStart="@dimen/_4sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <AutoCompleteTextView
+                    android:id="@+id/hometype"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:background="@color/white"
+                android:hint="Xonalar soni"
+                android:layout_marginTop="@dimen/_6sdp"
+                app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_4sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_4sdp"
+                app:boxCornerRadiusTopStart="@dimen/_4sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <AutoCompleteTextView
+                    android:id="@+id/roomcount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:background="@color/white"
+                android:hint="Bino holati"
+                android:layout_marginTop="@dimen/_6sdp"
+                app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
+                app:boxCornerRadiusBottomStart="@dimen/_4sdp"
+                app:boxCornerRadiusTopEnd="@dimen/_4sdp"
+                app:boxCornerRadiusTopStart="@dimen/_4sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <AutoCompleteTextView
+                    android:id="@+id/binoholati"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="none" />
+            </com.google.android.material.textfield.TextInputLayout>
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Qulayliklari"
+              android:layout_marginHorizontal="@dimen/_8sdp"
+              android:layout_marginTop="@dimen/_8sdp"
+              android:textSize="@dimen/_14sdp"
+              android:fontFamily="@font/poppins_medium"
+              android:textColor="@color/black"
+              >
+
+          </TextView>
+            <androidx.recyclerview.widget.RecyclerView
+             android:layout_marginTop="@dimen/_10sdp"
+             android:id="@+id/recyclerView"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content"
+             android:layout_marginHorizontal="@dimen/_8sdp">
+         </androidx.recyclerview.widget.RecyclerView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnuploadData"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:backgroundTint="@color/colorPrimary"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:text="Ma'lumotlarni yuklash"
+                android:textAllCaps="false"
+                android:fontFamily="@font/poppins_medium"
+
+                />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+    <!--
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
@@ -30,4 +210,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        -->
+</androidx.appcompat.widget.LinearLayoutCompat>

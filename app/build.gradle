@@ -68,15 +68,14 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage'
     // pinlockview
     implementation 'com.andrognito.pinlockview:pinlockview:2.1.0'
-
     // masked edittext
     implementation 'ru.egslava:MaskedEditText:1.0.5'
-
     // auto text size
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
 
     def lifecycle_version = "2.4.0-alpha03"
     // ViewModel
+   // implementation 'com.github.IslamKhSh:CardSlider:1.0.1'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
@@ -85,5 +84,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-reactivestreams-ktx:$lifecycle_version"
     implementation 'com.intuit.sdp:sdp-android:1.0.6'
     implementation project(':multipleimageselect')
-
+   // implementation 'com.github.IslamKhSh:CardSlider:1.1.0'
+    implementation 'com.synnapps:carouselview:0.1.5'
 }
