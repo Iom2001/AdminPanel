@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="album_view">Select photo album</string>
+    <string name="image_view">Tap to select images</string>
+
+    <string name="add">ADD</string>
+    <string name="selected">selected</string>
+    <string name="limit_exceeded">Can select a maximum of %d images</string>
+
+    <string name="error_null_cursor" translatable="false">Oops, something went wrong!</string>
+
+    <!--Request Permission-->
+    <string name="permission_info" tools:ignore="MissingTranslation">App requires permission to Storage to view images.</string>
+    <string name="permission_force" tools:ignore="MissingTranslation">App requires permission to Storage to view images. Tap Settings and go to Permissions to grant permission.</string>
+    <string name="permission_ok" translatable="false">OK</string>
+    <string name="permission_settings" translatable="false">Settings</string>
+    <string name="permission_package" translatable="false">package</string>
+
+</resources>
