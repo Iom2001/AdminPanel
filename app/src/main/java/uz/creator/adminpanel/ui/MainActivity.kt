@@ -1,4 +1,4 @@
-package uz.creator.adminpanel.ui
+package uz.creator.adminpanel
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,7 +14,7 @@ import uz.creator.adminpanel.viewmodel.AdminViewModelProviderFactory
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var viewModel: AdminViewModel
+    lateinit var viewModel: AdminViewModel
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,28 +28,28 @@ class MainActivity : AppCompatActivity() {
             ViewModelProvider(this, viewModelProviderFactory)[AdminViewModel::class.java]
 
         val navController = findNavController(R.id.fragmentContainerView)
+        //  setLanguage(Language.getLanguage())
         binding.bottomNavigationView.setupWithNavController(navController)
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.loginFragment -> {
-                    hideBottomNav()
+                 hideBottomNav()
                 }
-                R.id.newAddElonFragment -> {
-                    hideBottomNav()
-                }
-                else -> {
-                    showBottomNav()
-                }
+                R.id.newAddElonFragment->{
+                    hideBottomNav() }
+                else->{showBottomNav()}
             }
         }
     }
 
     private fun showBottomNav() {
-        binding.bottomNavigationView.visibility = View.VISIBLE
+       binding.bottomNavigationView.visibility = View.VISIBLE
     }
 
     private fun hideBottomNav() {
         binding.bottomNavigationView.visibility = View.GONE
     }
+
+
 }

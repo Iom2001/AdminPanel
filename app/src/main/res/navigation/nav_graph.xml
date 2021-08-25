@@ -42,6 +42,15 @@
         android:id="@+id/newAddElonFragment"
         android:name="uz.creator.userpanel.fragments.home._addElon.NewAddElonFragment"
         android:label="fragment_new_add_elon"
-        tools:layout="@layout/fragment_new_add_elon" />
+        tools:layout="@layout/fragment_new_add_elon" >
+        <action
+            android:id="@+id/action_newAddElonFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="uz.creator.userpanel.fragments.home._addElon.MapFragment"
+        android:label="fragment_map"
+        tools:layout="@layout/fragment_map" />
 
 </navigation>

@@ -2,23 +2,34 @@ package uz.creator.userpanel.fragments.home._addElon
 
 import android.app.Activity
 import android.content.Intent
+import android.location.Address
+import android.location.Geocoder
 import android.net.Uri
 import android.os.Bundle
+import android.provider.SyncStateContract
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.darsh.multipleimageselect.activities.AlbumSelectActivity
 import com.darsh.multipleimageselect.helpers.Constants
+import com.darsh.multipleimageselect.helpers.Constants.INTENT_EXTRA_LIMIT
 import com.darsh.multipleimageselect.models.Image
 import com.synnapps.carouselview.ImageListener
 import uz.creator.adminpanel.R
 import uz.creator.adminpanel.databinding.FragmentNewAddElonBinding
 import uz.creator.userpanel.fragments.home._addElon.adapter.CheckBoxAdapter
+import uz.creator.userpanel.fragments.home._addElon.model.AddressModel
 import uz.creator.userpanel.fragments.home._addElon.model.CheckBoxModel
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 class NewAddElonFragment : Fragment(), CheckBoxAdapter.OnCheckBoxListener {
     private var _binding: FragmentNewAddElonBinding? = null
@@ -51,6 +62,37 @@ class NewAddElonFragment : Fragment(), CheckBoxAdapter.OnCheckBoxListener {
         binding.btnuploadData.setOnClickListener {
             Toast.makeText(requireContext(), "Yuklandi", Toast.LENGTH_SHORT).show()
         }
+        binding.mapupload.setOnClickListener {
+            findNavController().navigate(R.id.action_newAddElonFragment_to_mapFragment)
+        }
+        ViewModelProvider(requireActivity())[shareAddressModel::class.java].data.observe(viewLifecycleOwner,
+            Observer {
+              //  Toast.makeText(requireContext(), it.toString()+"", Toast.LENGTH_SHORT).show()
+                //  getAddres(it)
+
+            })
+
+    }
+
+    private fun getAddres(it: AddressModel?) {
+        if (it != null) {
+            val lat = it.latitude
+            val lon = it.longitude
+
+            val geocoder = Geocoder(requireContext(), Locale.getDefault())
+            val addresses: List<Address> = geocoder.getFromLocation(lat, lon, 1)
+            val address = addresses[0].getAddressLine(0)
+            val address2 = addresses[0].getAddressLine(1)
+            val city = addresses[0].locality
+            val state = addresses[0].adminArea
+            val country = addresses[0].countryName
+            val postalCode = addresses[0].postalCode
+            val knownName = addresses[0].featureName
+            binding.mapupload.text =city.toString()
+            val message =
+                "Emergency situation. Call for help. My location is: " + address + "." + "http://maps.google.com/maps?saddr=" + lat + "," + lon
+            Log.e("sada",message.toString())
+        }
     }
 
     private fun SetupUI() {
@@ -71,7 +113,6 @@ class NewAddElonFragment : Fragment(), CheckBoxAdapter.OnCheckBoxListener {
         list.add(CheckBoxModel(0, "Muzlatgich", false))
         adapter.list = list
     }
-
     private fun BinoHolati() {
         val items = listOf("Yaxshi", "Yomon")
         val adapter =
