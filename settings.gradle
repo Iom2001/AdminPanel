@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Admin Panel"
 include ':app'
+include ':multipleimageselect'

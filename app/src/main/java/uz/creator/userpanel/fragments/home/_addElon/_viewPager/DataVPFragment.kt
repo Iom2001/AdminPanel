@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import uz.creator.adminpanel.R
 import uz.creator.adminpanel.databinding.FragmentDataVPBinding
 
-
 class DataVPFragment : Fragment() {
     private var _binding: FragmentDataVPBinding? = null
     val binding get() = _binding!!
@@ -23,6 +22,5 @@ class DataVPFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        _binding = null
     }
 }

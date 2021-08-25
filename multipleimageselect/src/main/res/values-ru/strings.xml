@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" tools:ignore="ExtraTranslation">Multiple Image Select</string>
+
+    <string name="album_view">Выберите фотоальбом</string>
+    <string name="image_view">Кликните на изображение для выбора</string>
+
+    <string name="add">Добавить</string>
+    <string name="selected">Выбрано</string>
+    <string name="limit_exceeded">Можно выбрать максимум %d изображений</string>
+
+    <string name="permission_denied" tools:ignore="ExtraTranslation">Отсутствует разрешение!</string>
+    <string name="permission_denied_albums" tools:ignore="ExtraTranslation">Разрешите доступ к фотографиям, медиа и файлам на своём устройстве для просмотра альбомов</string>
+    <string name="permission_denied_images" tools:ignore="ExtraTranslation">Разрешите доступ к фотографиям, медиа и файлам на своём устройстве для просмотра изображений</string>
+</resources>

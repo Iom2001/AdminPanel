@@ -4,8 +4,10 @@ buildscript {
         kotlin_version = '1.5.10'
     }
     repositories {
+        maven { url 'https://jitpack.io'
         google()
         jcenter()
+    }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.3"

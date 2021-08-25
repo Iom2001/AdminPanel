@@ -35,8 +35,6 @@ android {
     buildFeatures {
         viewBinding true
     }
-    ndkVersion '20.0.5594570'
-    compileSdkVersion 30
 }
 
 dependencies {
@@ -78,6 +76,7 @@ dependencies {
 
     def lifecycle_version = "2.4.0-alpha03"
     // ViewModel
+   // implementation 'com.github.IslamKhSh:CardSlider:1.0.1'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // LiveData
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
