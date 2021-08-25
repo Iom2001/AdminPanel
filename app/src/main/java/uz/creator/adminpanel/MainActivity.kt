@@ -26,6 +26,9 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.newAddElonFragment->{
                     hideBottomNav() }
+                R.id.mapFragment->{
+                    hideBottomNav()
+                }
                 else->{showBottomNav()}
             }
         }
