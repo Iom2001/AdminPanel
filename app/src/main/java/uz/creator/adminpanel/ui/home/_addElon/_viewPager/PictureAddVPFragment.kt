@@ -1,4 +1,4 @@
-package uz.creator.userpanel.fragments.home._addElon._viewPager
+package uz.creator.adminpanel.ui.home._addElon._viewPager
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.darsh.multipleimageselect.activities.AlbumSelectActivity
 import com.darsh.multipleimageselect.helpers.Constants
-import uz.creator.adminpanel.R
 import uz.creator.adminpanel.databinding.FragmentPictureAddVPBinding
 
 
@@ -26,10 +25,10 @@ class PictureAddVPFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-      binding.ChooseImage.setOnClickListener {
-          val intent = Intent(activity, AlbumSelectActivity::class.java)
-          intent.putExtra(Constants.INTENT_EXTRA_LIMIT, 10)
-          startActivityForResult(intent, Constants.REQUEST_CODE)
-      }
+        binding.ChooseImage.setOnClickListener {
+            val intent = Intent(activity, AlbumSelectActivity::class.java)
+            intent.putExtra(Constants.INTENT_EXTRA_LIMIT, 10)
+            startActivityForResult(intent, Constants.REQUEST_CODE)
+        }
     }
 }

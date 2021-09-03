@@ -3,18 +3,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="uz.creator.userpanel.fragments.home._addElon.MapFragment">
+    tools:context=".ui.home._addElon.MapFragment">
 
     <fragment
         android:id="@+id/mapAPI"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
     <ImageView
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:src="@drawable/ic_baseline_location_on_24"
         android:layout_gravity="center" />
+
     <LinearLayout
         android:background="@color/white"
         android:layout_gravity="bottom"

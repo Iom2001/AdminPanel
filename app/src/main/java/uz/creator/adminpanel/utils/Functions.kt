@@ -4,10 +4,16 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import com.google.android.material.snackbar.Snackbar
 
 fun Context.showToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+}
+
+fun View.snackBar(message:String){
+    Snackbar.make(this,message, Snackbar.LENGTH_SHORT).show()
 }
 
 fun View.onClick(listener: (View) -> Unit) {
@@ -41,4 +47,14 @@ fun isInternetAvailable(context: Context): Boolean {
         }
     }
     return result
+}
+
+fun View.showKeyboard() {
+    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0)
+}
+
+fun View.hideKeyboard() {
+    val imm = context.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+    imm.hideSoftInputFromWindow(windowToken, 0)
 }

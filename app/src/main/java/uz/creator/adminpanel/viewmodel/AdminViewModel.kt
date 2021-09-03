@@ -4,10 +4,12 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 import uz.creator.adminpanel.models.User
 import uz.creator.adminpanel.repository.AdminRepository
 
+@ExperimentalCoroutinesApi
 class AdminViewModel(
     app: Application,
     private val adminRepository: AdminRepository
@@ -21,4 +23,6 @@ class AdminViewModel(
     fun getAllUsers() = adminRepository.getAllUsers()
 
     fun addOrSetUser(user: User) = adminRepository.addOrSetUser(user)
+
+    fun checkUser(user: User) = adminRepository.checkUser(user)
 }

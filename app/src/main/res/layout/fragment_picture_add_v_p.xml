@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="uz.creator.userpanel.fragments.home._addElon._viewPager.PictureAddVPFragment">
+    tools:context=".ui.home._addElon._viewPager.PictureAddVPFragment">
     <androidx.cardview.widget.CardView
         android:id="@+id/ChooseImage"
         android:layout_width="match_parent"

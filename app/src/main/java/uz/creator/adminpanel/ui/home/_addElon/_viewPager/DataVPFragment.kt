@@ -1,11 +1,10 @@
-package uz.creator.userpanel.fragments.home._addElon._viewPager
+package uz.creator.adminpanel.ui.home._addElon._viewPager
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import uz.creator.adminpanel.R
 import uz.creator.adminpanel.databinding.FragmentDataVPBinding
 
 class DataVPFragment : Fragment() {

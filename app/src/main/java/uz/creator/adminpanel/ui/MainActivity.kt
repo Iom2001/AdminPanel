@@ -1,4 +1,4 @@
-package uz.creator.adminpanel
+package uz.creator.adminpanel.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -19,13 +19,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
         val newsRepository = AdminRepository()
         val viewModelProviderFactory = AdminViewModelProviderFactory(application, newsRepository)
         viewModel =
             ViewModelProvider(this, viewModelProviderFactory)[AdminViewModel::class.java]
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
 
         val navController = findNavController(R.id.fragmentContainerView)
         //  setLanguage(Language.getLanguage())
@@ -34,22 +34,32 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.loginFragment -> {
-                 hideBottomNav()
+                    hideBottomNav()
                 }
-                R.id.newAddElonFragment->{
-                    hideBottomNav() }
-                else->{showBottomNav()}
+                R.id.newAddElonFragment -> {
+                    hideBottomNav()
+                }
+                R.id.passwordFragment -> {
+                    hideBottomNav()
+                }
+                R.id.addUserFragment -> {
+                    hideBottomNav()
+                }
+                R.id.mapFragment -> {
+                    hideBottomNav()
+                }
+                else -> {
+                    showBottomNav()
+                }
             }
         }
     }
 
     private fun showBottomNav() {
-       binding.bottomNavigationView.visibility = View.VISIBLE
+        binding.bottomNavigationView.visibility = View.VISIBLE
     }
 
     private fun hideBottomNav() {
         binding.bottomNavigationView.visibility = View.GONE
     }
-
-
 }

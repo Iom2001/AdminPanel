@@ -1,4 +1,4 @@
-package uz.creator.userpanel.fragments.elon
+package uz.creator.adminpanel.ui.elon
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

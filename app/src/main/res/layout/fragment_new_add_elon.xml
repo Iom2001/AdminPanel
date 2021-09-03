@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="uz.creator.userpanel.fragments.home._addElon.NewAddElonFragment">
+    tools:context=".ui.home._addElon.NewAddElonFragment">
 
     <include
         android:id="@+id/toolbar"
@@ -31,6 +31,7 @@
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
+
                 <com.synnapps.carouselview.CarouselView
                     android:id="@+id/carouselView"
                     android:layout_width="match_parent"

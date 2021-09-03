@@ -1,4 +1,4 @@
-package uz.creator.userpanel.fragments.home._addElon._viewPager
+package uz.creator.adminpanel.ui.home._addElon._viewPager
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

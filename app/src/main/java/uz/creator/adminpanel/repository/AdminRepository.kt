@@ -5,6 +5,7 @@ import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
@@ -12,6 +13,7 @@ import kotlinx.coroutines.tasks.await
 import uz.creator.adminpanel.models.User
 import uz.creator.adminpanel.utils.Resource
 
+@ExperimentalCoroutinesApi
 class AdminRepository {
 
     private var fireStore: FirebaseFirestore = Firebase.firestore
@@ -54,10 +56,28 @@ class AdminRepository {
         val admin: User? = fireStore.collection("admin").document("mainAdmin").get().await()
             .toObject(User::class.java)
         admin?.let {
-            if (admin.phoneNumber == phoneNumber) {
+            if (it.phoneNumber == phoneNumber) {
                 emit(Resource.Success(true))
             } else {
                 emit(Resource.Success(false))
+            }
+        }
+    }.catch {
+        // If exception is thrown, emit failed state along with message.
+        emit(Resource.Error(it.message.toString()))
+    }.flowOn(Dispatchers.IO)
+
+    fun checkUser(user: User) = flow<Resource<Boolean>> {
+        emit(Resource.Loading())
+        val res = user.phoneNumber?.let {
+            fireStore.collection("users").document(it).get().await()
+        }
+        val user = res?.toObject(User::class.java)
+        user?.let {
+            if (it.phoneNumber == user.phoneNumber) {
+                emit(Resource.Success(true))
+            } else {
+                emit(Resource.Error("Phone number is not added!!!"))
             }
         }
     }.catch {

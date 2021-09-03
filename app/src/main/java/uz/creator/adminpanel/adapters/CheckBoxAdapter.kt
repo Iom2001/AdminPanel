@@ -1,4 +1,4 @@
-package uz.creator.userpanel.fragments.home._addElon.adapter
+package uz.creator.adminpanel.adapters
 
 import android.annotation.SuppressLint
 import android.util.SparseBooleanArray
@@ -9,14 +9,16 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.creator.adminpanel.databinding.AdapterCheckboxBinding
-import uz.creator.userpanel.fragments.home._addElon.model.CheckBoxModel
+import uz.creator.adminpanel.ui.home._addElon.model.CheckBoxModel
 
 class CheckBoxAdapter(
     private val context: FragmentActivity,
     private val click: OnCheckBoxListener
 ) : RecyclerView.Adapter<CheckBoxAdapter.MyHolderView>() {
+
     var layoutInflater = LayoutInflater.from(context)
     var checkBoxStateArray = SparseBooleanArray()
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolderView {
         var binding = AdapterCheckboxBinding.inflate(layoutInflater, parent, false)
         return MyHolderView(binding)
