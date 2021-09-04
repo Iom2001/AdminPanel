@@ -190,6 +190,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                             binding.numberEdit.setText("")
                             binding.passwordEdit.setText("")
                             boolean = false
+                            Permanent.phoneNumber = user.phoneNumber ?: ""
                             var editorRegister = sharedPreferencesRegister.edit()
                             editorRegister.putBoolean(Permanent.REGISTER_KEY, true)
                             editorRegister.apply()

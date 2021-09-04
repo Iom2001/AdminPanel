@@ -70,7 +70,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_16sdp"
                 android:background="@color/white"
-                android:hint="Uy qavati"
+                android:hint="Elon turi"
                 app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_4sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_4sdp"

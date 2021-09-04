@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import uz.creator.adminpanel.databinding.AdapterCheckboxBinding
-import uz.creator.adminpanel.ui.home._addElon.model.CheckBoxModel
+import uz.creator.adminpanel.models.CheckBoxModel
 
 class CheckBoxAdapter(
     private val context: FragmentActivity,
@@ -23,9 +23,10 @@ class CheckBoxAdapter(
         var binding = AdapterCheckboxBinding.inflate(layoutInflater, parent, false)
         return MyHolderView(binding)
     }
+
     override fun onBindViewHolder(holder: MyHolderView, position: Int) {
         with(holder) {
-            binding.title.text = list[position].title.toString()
+            binding.title.text = list[position].title
             checkBoxStateArray.get(position, true)
         }
     }
@@ -55,7 +56,7 @@ class CheckBoxAdapter(
             oldItem: CheckBoxModel,
             newItem: CheckBoxModel
         ): Boolean {
-            return oldItem.id == newItem.id
+            return oldItem.title == newItem.title
         }
 
         @SuppressLint("DiffUtilEquals")
@@ -67,6 +68,7 @@ class CheckBoxAdapter(
         }
     }
     private val differ = AsyncListDiffer(this, diffCallback)
+
     var list: List<CheckBoxModel>
         get() = differ.currentList
         set(value) {

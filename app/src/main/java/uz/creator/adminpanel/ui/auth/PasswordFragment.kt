@@ -53,6 +53,7 @@ class PasswordFragment : Fragment(), PinLockListener {
             if (user?.pin == pin) {
                 binding.pinLockView.resetPinLockView()
                 binding.progressBar.visibility = View.INVISIBLE
+                Permanent.phoneNumber = user?.phoneNumber ?: ""
                 findNavController().popBackStack()
                 findNavController().navigate(R.id.homeFragment)
             } else {

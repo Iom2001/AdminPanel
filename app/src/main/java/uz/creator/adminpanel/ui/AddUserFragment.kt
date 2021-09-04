@@ -19,8 +19,6 @@ import uz.creator.adminpanel.databinding.FragmentAddUserBinding
 import uz.creator.adminpanel.models.User
 import uz.creator.adminpanel.utils.snackBar
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
@@ -44,7 +42,7 @@ class AddUserFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentAddUserBinding.inflate(layoutInflater, container, false)
         firebaseFirestore = FirebaseFirestore.getInstance()
         binding.cardAddUser.setOnClickListener {
