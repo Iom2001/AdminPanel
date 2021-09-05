@@ -15,13 +15,17 @@
         app:cardElevation="@dimen/_8sdp"
         android:layout_margin="@dimen/_12sdp">
 
-        <ImageView
-            android:id="@+id/iv_home"
+        <com.synnapps.carouselview.CarouselView
+            android:id="@+id/cv_item_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/home_image"
-            android:scaleType="centerCrop"
-            />
+            app:fillColor="#FFFFFFFF"
+            app:pageColor="#00000000"
+            android:layout_margin="@dimen/_8sdp"
+            app:radius="6dp"
+            app:slideInterval="3000"
+            app:strokeColor="#FF777777"
+            app:strokeWidth="1dp"/>
 
     </androidx.cardview.widget.CardView>
     
@@ -58,6 +62,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_mulk_turi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ijara"
@@ -82,6 +87,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_holati"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Yaxwi"
@@ -106,6 +112,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/uy_turi"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Kvartira"
@@ -131,6 +138,7 @@
                         />
 
                     <ImageView
+                        android:id="@+id/iv_manzil"
                         android:layout_width="0dp"
                         android:layout_weight="1"
                         android:layout_marginStart="@dimen/_12sdp"
@@ -156,6 +164,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_xona"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="5"
@@ -180,6 +189,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_maydon"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3 sotix"
@@ -204,6 +214,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_umum_qavat"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="5"
@@ -228,6 +239,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_uyning_qavati"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3"
@@ -253,6 +265,7 @@
                         />
 
                     <TextView
+                        android:id="@+id/tv_nomer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="99 793 96 96"

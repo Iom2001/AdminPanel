@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.Toast
 import kotlinx.coroutines.NonDisposableHandle.parent
 import uz.creator.adminpanel.R
 import uz.creator.adminpanel.databinding.FragmentFilterBinding
@@ -29,7 +30,15 @@ class FilterFragment : Fragment() {
         filtrManzili()
         filtrMulkTuri()
         filtrUyturi()
+        btnFilter()
+    }
 
+    private fun btnFilter() {
+        binding.btnFiltr.setOnClickListener {
+            Toast.makeText(requireContext() , binding.textView3.text , Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext() , binding.autoComplete.text , Toast.LENGTH_LONG).show()
+            Toast.makeText(requireContext() , binding.textView2.text , Toast.LENGTH_LONG).show()
+        }
     }
 
     companion object {
@@ -39,8 +48,8 @@ class FilterFragment : Fragment() {
     }
 
     private fun filtrManzili(){
-        val items = listOf("Andijon" , "Buxoro" , "Farg'ona" , "Jizzax" , "Xorazm" , "Namangan"
-            , "Navoiy" , "Qashqadaryo" , "Samarqand" , "Sirdaryo" , "Surxondaryo" , "Toshkent")
+        val items = listOf("Arnasoy" , "Baxmal" , "Do'stlik" , "Forish" , "G'allaorol" , "Jizzax shahri"
+            , "Jizzax tumani" , "Mirzacho'l" , "Samarqand" , "Paxtakor" , "Yangiobod" , "Zafarobod" , "Zarband" , "Zomin")
         val adapter = ArrayAdapter(requireContext() , R.layout.support_simple_spinner_dropdown_item , items)
         (binding.filtrManzil.editText as? AutoCompleteTextView)?.setAdapter(adapter)
     }
