@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.core.view.get
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
 import uz.creator.adminpanel.R
@@ -40,7 +41,9 @@ class ElonFragment : Fragment() {
         elonAdapter = ElonAdapter(advertiseList, object : ElonAdapter.ElonClick {
 
             override fun onElonClick(advertise: Advertise, position: Int) {
-
+                var bundle = Bundle()
+                bundle.putString("date", advertise.createdTime)
+                findNavController().navigate(R.id.homeItemFragment, bundle)
             }
 
             override fun onElonItemClick(advertise: Advertise, position: Int, view: View) {
