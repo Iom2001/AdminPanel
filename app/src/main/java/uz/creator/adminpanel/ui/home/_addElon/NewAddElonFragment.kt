@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.darsh.multipleimageselect.activities.AlbumSelectActivity
 import com.darsh.multipleimageselect.helpers.Constants
 import com.darsh.multipleimageselect.models.Image
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.GeoPoint
 import com.google.firebase.storage.FirebaseStorage
@@ -131,6 +132,8 @@ class NewAddElonFragment : Fragment(), CheckBoxAdapter.OnCheckBoxListener {
 
                 var advertise: Advertise = Advertise(
                     type,
+                    "",
+                    "",
                     true,
                     condition,
                     propertyType,
