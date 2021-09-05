@@ -33,6 +33,8 @@
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
+                android:clickable="true"
+                android:focusable="true"
                 android:foreground="?attr/selectableItemBackground"
                 app:cardBackgroundColor="@android:color/transparent"
                 app:cardCornerRadius="@dimen/_10sdp"
@@ -83,7 +85,8 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_gallery"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toTopOf="@+id/prev_next_layout"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:layout_editor_absoluteX="-16dp"
                     tools:listitem="@layout/item_gallery_elon" />
@@ -92,7 +95,7 @@
                     android:id="@+id/prev_next_layout"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
-                    app:layout_constraintTop_toBottomOf="@+id/rv_gallery">
+                    app:layout_constraintBottom_toBottomOf="parent">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/previous_layout"

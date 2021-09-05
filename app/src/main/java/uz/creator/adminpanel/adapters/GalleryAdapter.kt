@@ -1,15 +1,12 @@
 package uz.creator.adminpanel.adapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.synnapps.carouselview.ImageListener
-import uz.creator.adminpanel.R
 import uz.creator.adminpanel.databinding.HomeItemLayoutBinding
 import uz.creator.adminpanel.models.CheckBoxModel
 
-class HomeAdapter(val items: List<CheckBoxModel>) : RecyclerView.Adapter<HomeAdapter.ItemHolder>() {
+class GalleryAdapter(val items: List<CheckBoxModel>) : RecyclerView.Adapter<GalleryAdapter.ItemHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
         var binding =
@@ -29,7 +26,7 @@ class HomeAdapter(val items: List<CheckBoxModel>) : RecyclerView.Adapter<HomeAda
 
         with(holder) {
 
-            if (item.check){
+            if (item.check) {
 
             }
 

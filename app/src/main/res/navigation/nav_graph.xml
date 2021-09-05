@@ -30,7 +30,11 @@
         android:id="@+id/galeryFragment"
         android:name="uz.creator.adminpanel.ui.GaleryFragment"
         android:label="fragment_galery"
-        tools:layout="@layout/fragment_galery" />
+        tools:layout="@layout/fragment_galery">
+        <action
+            android:id="@+id/action_galeryFragment_to_filterFragment"
+            app:destination="@id/filterFragment" />
+    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="uz.creator.adminpanel.ui.home.HomeFragment"
@@ -67,5 +71,10 @@
         android:name="uz.creator.adminpanel.ui.AddUserFragment"
         android:label="fragment_add_user"
         tools:layout="@layout/fragment_add_user" />
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="uz.creator.adminpanel.ui.FilterFragment"
+        android:label="fragment_filter"
+        tools:layout="@layout/fragment_filter" />
 
 </navigation>
