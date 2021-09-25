@@ -15,7 +15,6 @@ import uz.creator.adminpanel.R
 import uz.creator.adminpanel.databinding.FragmentPasswordBinding
 import uz.creator.adminpanel.models.User
 import uz.creator.adminpanel.utils.Permanent
-import uz.creator.adminpanel.utils.showToast
 import uz.creator.adminpanel.utils.snackBar
 
 class PasswordFragment : Fragment(), PinLockListener {
@@ -26,6 +25,7 @@ class PasswordFragment : Fragment(), PinLockListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        get user phoneNumber
         phoneNumber =
             requireActivity().getSharedPreferences(Permanent.PREF_PHONE_NAME, Context.MODE_PRIVATE)
                 .getString(Permanent.PHONE_KEY, "")
@@ -46,11 +46,16 @@ class PasswordFragment : Fragment(), PinLockListener {
     }
 
     override fun onComplete(pin: String?) {
-        requireContext().showToast(pin ?: "")
         binding.progressBar.visibility = View.VISIBLE
+//        get user object
         firestore.collection("users").document(phoneNumber!!).get().addOnSuccessListener {
             val user = it.toObject(User::class.java)
-            if (user?.pin == pin) {
+//            check the user is active and pin
+            if (user?.isActive != null && user?.isActive == false) {
+                binding.pinLockView.resetPinLockView()
+                binding.progressBar.visibility = View.INVISIBLE
+                requireView().snackBar("Siz admin tomonidan o'chirilgansiz!!!")
+            } else if (user?.pin == pin) {
                 binding.pinLockView.resetPinLockView()
                 binding.progressBar.visibility = View.INVISIBLE
                 Permanent.phoneNumber = user?.phoneNumber ?: ""
@@ -76,12 +81,9 @@ class PasswordFragment : Fragment(), PinLockListener {
     }
 
     private fun checkIsAdmin(phoneNumber: String) {
+//        check the user is admin
         firestore.collection("admin").document(phoneNumber).get().addOnSuccessListener {
-            if (it.exists()) {
-                Permanent.isAdmin = true
-            } else {
-                Permanent.isAdmin = true
-            }
+            Permanent.isAdmin = it.exists()
         }
     }
 }

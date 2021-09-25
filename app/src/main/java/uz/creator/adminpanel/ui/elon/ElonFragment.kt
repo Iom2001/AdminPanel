@@ -1,30 +1,38 @@
 package uz.creator.adminpanel.ui.elon
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
-import androidx.core.view.get
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import uz.creator.adminpanel.R
 import uz.creator.adminpanel.adapters.ElonAdapter
 import uz.creator.adminpanel.databinding.FragmentElonBinding
-import uz.creator.adminpanel.models.Advertise
-import uz.creator.adminpanel.models.User
+import uz.creator.adminpanel.models.Elon
+import uz.creator.adminpanel.utils.MyDialog
 import uz.creator.adminpanel.utils.Permanent
+import uz.creator.adminpanel.utils.showToast
 import uz.creator.adminpanel.utils.snackBar
 
 class ElonFragment : Fragment() {
 
     private lateinit var binding: FragmentElonBinding
-    private lateinit var advertiseList: ArrayList<Advertise>
+    private lateinit var elonList: ArrayList<Elon>
     private lateinit var elonAdapter: ElonAdapter
     private lateinit var firebaseFirestore: FirebaseFirestore
+    private lateinit var myDialog: MyDialog
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        myDialog = MyDialog(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,57 +45,42 @@ class ElonFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        advertiseList = ArrayList()
-        elonAdapter = ElonAdapter(advertiseList, object : ElonAdapter.ElonClick {
+        elonList = ArrayList()
+//        initialize the adapter
+        elonAdapter = ElonAdapter(elonList, object : ElonAdapter.ElonClick {
 
-            override fun onElonClick(advertise: Advertise, position: Int) {
-                var bundle = Bundle()
-                bundle.putString("date", advertise.createdTime)
-                findNavController().navigate(R.id.homeItemFragment, bundle)
+            override fun onElonClick(elon: Elon, position: Int) {
+
             }
 
-            override fun onElonItemClick(advertise: Advertise, position: Int, view: View) {
-                val popupMenu: PopupMenu = PopupMenu(requireContext(), view)
-                popupMenu.menuInflater.inflate(R.menu.elon_menu, popupMenu.menu)
-
-                val menuOpts = popupMenu.menu
-                advertise.isActive?.let {
-                    if (!it) {
-                        menuOpts[0].title = "Aktivlashtirish"
-                    }
+            override fun onElonItemClick(elon: Elon, position: Int, view: View) {
+//                show menu when elon icon is pressed
+                val popupMenu = PopupMenu(requireContext(), view)
+                if (Permanent.isAdmin) {
+                    popupMenu.menuInflater.inflate(R.menu.elon_admin_menu, popupMenu.menu)
+                } else {
+                    popupMenu.menuInflater.inflate(R.menu.elon_menu, popupMenu.menu)
                 }
 
                 popupMenu.setOnMenuItemClickListener(PopupMenu.OnMenuItemClickListener { item ->
                     when (item.itemId) {
                         R.id.action_crick -> {
-                            advertise.isActive?.let {
-                                val washingtonRef =
-                                    firebaseFirestore.collection("elonlar")
-                                        .document("${advertise.phoneNumber}${advertise.createdTime}")
-                                if (it) {
-
-                                    // Set the "isCapital" field of the city 'DC'
-                                    washingtonRef
-                                        .update("active", false)
-                                        .addOnSuccessListener {
-                                        }
-                                        .addOnFailureListener { e ->
-                                        }
-                                } else {
-                                    washingtonRef
-                                        .update("active", true)
-                                        .addOnSuccessListener {
-                                        }
-                                        .addOnFailureListener { e ->
-                                        }
-                                }
+//                            show elon location in map
+                            if (elon.geoPoint != null) {
+                                val gmmIntentUri =
+                                    Uri.parse("geo:0,0?q=${elon.geoPoint?.latitude},${elon.geoPoint?.longitude}(Google+Uzbekistan)")
+                                val mapIntent = Intent(Intent.ACTION_VIEW, gmmIntentUri)
+                                mapIntent.setPackage("com.google.android.apps.maps")
+                                startActivity(mapIntent)
+                            } else {
+                                requireContext().showToast("Xaritadan hudud tanlanmagan")
                             }
                         }
 
                         R.id.action_ftbal -> {
-                            // [START delete_document]
-                            firebaseFirestore.collection("elonlar")
-                                .document("${advertise.phoneNumber}${advertise.createdTime}")
+//                            delete elon
+                            firebaseFirestore.collection("elonforsearch")
+                                .document("${elon.phoneNumber}${elon.createdTime}")
                                 .delete()
                                 .addOnSuccessListener {
                                     requireView().snackBar("Deleted Successfully")
@@ -103,45 +96,53 @@ class ElonFragment : Fragment() {
             }
         })
         binding.rvElon.adapter = elonAdapter
-        getAdvertiseList()
+        getElonList()
+        binding.cardAddElon.setOnClickListener {
+            findNavController().navigate(R.id.addElonFragment)
+        }
     }
 
-    private fun getAdvertiseList() {
-        firebaseFirestore.collection("elonlar").whereEqualTo("phoneNumber", Permanent.phoneNumber)
+    private fun getElonList() {
+//        get and listen elon list from the firestore
+        myDialog.showDialog()
+        firebaseFirestore.collection("elonforsearch")
+            .orderBy("createdTime", Query.Direction.DESCENDING)
             .addSnapshotListener { snapshots, e ->
                 if (e != null) {
-                    Log.w("TAG", "listen:error", e)
+                    requireContext().showToast(e.message.toString())
+                    myDialog.dismissDialog()
                     return@addSnapshotListener
                 }
                 for (a in snapshots!!.documentChanges) {
                     when (a.type) {
                         DocumentChange.Type.ADDED -> {
-                            var advertise = a.document.toObject(Advertise::class.java)
-                            advertiseList.add(advertise)
-                            var listSize = advertiseList.size
+                            var elon = a.document.toObject(Elon::class.java)
+                            elonList.add(elon)
+                            var listSize = elonList.size
                             elonAdapter.notifyItemInserted(listSize - 1)
                             elonAdapter.notifyItemRangeChanged(listSize - 1, listSize)
                         }
                         DocumentChange.Type.MODIFIED -> {
-                            val advertise = a.document.toObject(Advertise::class.java)
-                            for (i in advertiseList) {
-                                if (advertise.phoneNumber == i.phoneNumber) {
-                                    val position = advertiseList.indexOf(i)
-                                    advertiseList[position] = advertise
+                            val elon = a.document.toObject(Elon::class.java)
+                            for (i in elonList) {
+                                if (elon.phoneNumber == i.phoneNumber) {
+                                    val position = elonList.indexOf(i)
+                                    elonList[position] = elon
                                     elonAdapter.notifyItemChanged(position)
                                     break
                                 }
                             }
                         }
                         DocumentChange.Type.REMOVED -> {
-                            var advertise = a.document.toObject(Advertise::class.java)
-                            val position = advertiseList.indexOf(advertise)
-                            advertiseList.remove(advertise)
+                            var elon = a.document.toObject(Elon::class.java)
+                            val position = elonList.indexOf(elon)
+                            elonList.remove(elon)
                             elonAdapter.notifyItemRemoved(position);
-                            elonAdapter.notifyItemRangeChanged(position, advertiseList.size);
+                            elonAdapter.notifyItemRangeChanged(position, elonList.size)
                         }
                     }
                 }
+                myDialog.dismissDialog()
             }
     }
 

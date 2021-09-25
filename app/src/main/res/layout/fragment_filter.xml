@@ -1,97 +1,468 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    android:orientation="vertical"
+    android:background="@color/back_color"
     tools:context=".ui.FilterFragment">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:gravity="center_horizontal"
-        android:padding="@dimen/_8sdp"
-        android:text="Filtrlar"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_20sdp"
-        android:textStyle="bold" />
+        android:layout_height="match_parent"
+        android:padding="20dp">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/filtr_manzil"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:background="@color/white"
-        android:hint="Viloyat bo'yicha filtrlash"
-        app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
-        app:boxCornerRadiusBottomStart="@dimen/_8sdp"
-        app:boxCornerRadiusTopEnd="@dimen/_8sdp"
-        app:boxCornerRadiusTopStart="@dimen/_8sdp">
+        <TextView
+            android:id="@+id/filter_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:padding="@dimen/_8sdp"
+            android:text="@string/filtrlash"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <AutoCompleteTextView
-            android:id="@+id/text_view_3"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/search_text_layout"
+            style="@style/Widget.Shrine.TextInputLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none" />
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:background="@color/white"
+            android:hint="@string/search_text"
+            app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_8sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_8sdp"
+            app:boxCornerRadiusTopStart="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@+id/filter_tv">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/search_text_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textShortMessage"
+                android:maxLength="15"
+                android:maxLines="1" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/filtr_mulk_turi"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:background="@color/white"
-        android:hint="Mulk turi bo'yich filtrlash"
-        app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
-        app:boxCornerRadiusBottomStart="@dimen/_8sdp"
-        app:boxCornerRadiusTopEnd="@dimen/_8sdp"
-        app:boxCornerRadiusTopStart="@dimen/_8sdp">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <AutoCompleteTextView
-            android:id="@+id/autoComplete"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/advertise_type"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none" />
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:background="@color/white"
+            android:hint="@string/elon_turi_bo_yich_filtrlash"
+            app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_8sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_8sdp"
+            app:boxCornerRadiusTopStart="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@+id/search_text_layout">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <AutoCompleteTextView
+                android:id="@+id/advertise_type_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/filtr_uy_turi"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_12sdp"
-        android:background="@color/white"
-        android:hint="Mulk uy turi bo'yicha filtrlash"
-        app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
-        app:boxCornerRadiusBottomStart="@dimen/_8sdp"
-        app:boxCornerRadiusTopEnd="@dimen/_8sdp"
-        app:boxCornerRadiusTopStart="@dimen/_8sdp">
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <AutoCompleteTextView
-            android:id="@+id/text_view_2"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/home_type"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none" />
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:background="@color/white"
+            android:hint="@string/mulk_turi_bo_yicha_filtrlash"
+            app:boxCornerRadiusBottomEnd="@dimen/_8sdp"
+            app:boxCornerRadiusBottomStart="@dimen/_8sdp"
+            app:boxCornerRadiusTopEnd="@dimen/_8sdp"
+            app:boxCornerRadiusTopStart="@dimen/_8sdp"
+            app:layout_constraintTop_toBottomOf="@id/advertise_type">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <AutoCompleteTextView
+                android:id="@+id/home_type_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none" />
 
-    <com.google.android.material.button.MaterialButton
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_45sdp"
-        android:layout_marginHorizontal="@dimen/_60sdp"
-        android:layout_marginTop="@dimen/_40sdp"
-        android:text="Filtrlash"
-        android:textAllCaps="false"
-        android:textSize="@dimen/_16sdp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="@string/narx"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/home_type" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/price_tv">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/dan"
+                android:textSize="@dimen/_10sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/_3sdp"
+                android:text="@string/gacha"
+                android:textSize="@dimen/_10sdp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/price_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/price_tv">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:elevation="0dp"
+                app:cardCornerRadius="@dimen/_4sdp"
+                app:cardElevation="0dp">
+
+                <EditText
+                    android:id="@+id/price_start_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#0D000000"
+                    android:inputType="number"
+                    android:maxLength="8"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:textColor="@color/text_color" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:elevation="0dp"
+                app:cardCornerRadius="@dimen/_4sdp"
+                app:cardElevation="0dp">
+
+                <EditText
+                    android:id="@+id/price_end_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#0D000000"
+                    android:inputType="number"
+                    android:maxLength="8"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:textColor="@color/text_color" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/room_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="@string/xonalar_soni"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/price_layout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/room_tv">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/dan"
+                android:textSize="@dimen/_10sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/_3sdp"
+                android:text="@string/gacha"
+                android:textSize="@dimen/_10sdp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/room_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/room_tv">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:elevation="0dp"
+                app:cardCornerRadius="@dimen/_4sdp"
+                app:cardElevation="0dp">
+
+                <EditText
+                    android:id="@+id/room_start_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#0D000000"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:textColor="@color/text_color" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:elevation="0dp"
+                app:cardCornerRadius="@dimen/_4sdp"
+                app:cardElevation="0dp">
+
+                <EditText
+                    android:id="@+id/room_end_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#0D000000"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:textColor="@color/text_color" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/floor_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="@string/uyning_qavati"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/room_layout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/floor_tv">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/dan"
+                android:textSize="@dimen/_10sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/_3sdp"
+                android:text="@string/gacha"
+                android:textSize="@dimen/_10sdp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/floor_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/floor_tv">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:elevation="0dp"
+                app:cardCornerRadius="@dimen/_4sdp"
+                app:cardElevation="0dp">
+
+                <EditText
+                    android:id="@+id/floor_start_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#0D000000"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:textColor="@color/text_color" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:elevation="0dp"
+                app:cardCornerRadius="@dimen/_4sdp"
+                app:cardElevation="0dp">
+
+                <EditText
+                    android:id="@+id/floor_end_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#0D000000"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:textColor="@color/text_color" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/total_floor_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:text="@string/uyning_qavati"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_15sdp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/floor_layout" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/total_floor_tv">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/dan"
+                android:textSize="@dimen/_10sdp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:paddingStart="@dimen/_3sdp"
+                android:text="@string/gacha"
+                android:textSize="@dimen/_10sdp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/total_floor_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/total_floor_tv">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:elevation="0dp"
+                app:cardCornerRadius="@dimen/_4sdp"
+                app:cardElevation="0dp">
+
+                <EditText
+                    android:id="@+id/total_floor_start_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#0D000000"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:maxLines="1"
+                    android:paddingEnd="0dp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:textColor="@color/text_color" />
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/_3sdp"
+                android:layout_weight="1"
+                android:elevation="0dp"
+                app:cardCornerRadius="@dimen/_4sdp"
+                app:cardElevation="0dp">
+
+                <EditText
+                    android:id="@+id/total_floor_end_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#0D000000"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:paddingEnd="0dp"
+                    android:maxLines="1"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:textColor="@color/text_color" />
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/filter_btn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_45sdp"
+            android:layout_marginHorizontal="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/filtrlash"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_16sdp"
+            app:layout_constraintTop_toBottomOf="@+id/total_floor_layout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

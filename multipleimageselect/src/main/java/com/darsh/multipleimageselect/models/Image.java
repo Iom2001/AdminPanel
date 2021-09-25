@@ -7,6 +7,7 @@ import android.os.Parcelable;
  * Created by Darshan on 4/18/2015.
  */
 public class Image implements Parcelable {
+
     public long id;
     public String name;
     public String path;

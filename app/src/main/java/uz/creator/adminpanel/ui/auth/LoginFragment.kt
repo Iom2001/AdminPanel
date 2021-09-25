@@ -2,16 +2,12 @@ package uz.creator.adminpanel.ui.auth
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.Settings
 import android.text.TextUtils
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.LinearLayout
-import android.widget.ProgressBar
-import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
@@ -19,36 +15,34 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.coroutines.*
-import uz.creator.adminpanel.ui.MainActivity
 import uz.creator.adminpanel.R
 import uz.creator.adminpanel.databinding.FragmentLoginBinding
 import uz.creator.adminpanel.models.User
-import uz.creator.adminpanel.utils.Permanent
-import uz.creator.adminpanel.utils.hideKeyboard
-import uz.creator.adminpanel.utils.snackBar
-import uz.creator.adminpanel.viewmodel.AdminViewModel
+import uz.creator.adminpanel.utils.*
 
 class LoginFragment : Fragment(R.layout.fragment_login) {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
-    private lateinit var viewModel: AdminViewModel
     private lateinit var imageUri: Uri
     private var boolean = false
     private lateinit var referenceStorage: StorageReference
     private val storage = FirebaseStorage.getInstance()
     private lateinit var firebaseFirestore: FirebaseFirestore
-    private lateinit var dialog: androidx.appcompat.app.AlertDialog
+    private lateinit var myDialog: MyDialog
     var userId = ""
     private lateinit var sharedPreferencesRegister: SharedPreferences
     private lateinit var sharedPreferencesPhone: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        get android id
         userId = Settings.Secure.getString(
             context?.contentResolver,
             Settings.Secure.ANDROID_ID
         )
+
+//        check is registered
         sharedPreferencesRegister =
             activity?.getSharedPreferences(Permanent.PREF_REGISTER_NAME, Context.MODE_PRIVATE)!!
         sharedPreferencesPhone =
@@ -60,8 +54,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         ) {
             findNavController().popBackStack()
             findNavController().navigate(R.id.passwordFragment)
-//            findNavController().popBackStack(R.id.loginFragment, true)
         }
+        myDialog = MyDialog(requireContext())
     }
 
 
@@ -75,7 +69,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = (activity as MainActivity).viewModel
 
         referenceStorage = storage.getReference("userImages")
         firebaseFirestore = FirebaseFirestore.getInstance()
@@ -87,6 +80,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
 
         binding.registrationBtn.setOnClickListener {
+//            registration the user
             requireView().hideKeyboard()
             var username = binding.nameEdit.text.trim().toString()
             var phoneNumber = binding.numberEdit.text?.trim().toString()
@@ -94,39 +88,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             if (!this@LoginFragment::imageUri.isInitialized || !boolean) {
                 Toast.makeText(context, "Please select the image!!!", Toast.LENGTH_SHORT).show()
             } else if (checkEmpty(username, phoneNumber, pinNumber)) {
-                val llPadding = 30
-                val ll = LinearLayout(context)
-                ll.orientation = LinearLayout.HORIZONTAL
-                ll.setPadding(llPadding, llPadding, llPadding, llPadding)
-                ll.gravity = Gravity.CENTER
-                var llParam = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-                )
-                llParam.gravity = Gravity.CENTER
-                ll.layoutParams = llParam
-                val progressBar = ProgressBar(context)
-                progressBar.isIndeterminate = true
-                progressBar.setPadding(0, 0, llPadding, 0)
-                progressBar.layoutParams = llParam
-                llParam = LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-                )
-                llParam.gravity = Gravity.CENTER
-                val tvText = TextView(context)
-                tvText.text = "Loading ..."
-                tvText.setTextColor(Color.parseColor("#000000"))
-                tvText.textSize = 20f
-                tvText.layoutParams = llParam
-                ll.addView(progressBar)
-                ll.addView(tvText)
-                val builder: androidx.appcompat.app.AlertDialog.Builder =
-                    androidx.appcompat.app.AlertDialog.Builder(requireContext())
-                builder.setCancelable(false)
-                builder.setView(ll)
-                dialog = builder.create()
-                dialog.show()
+                myDialog.showDialog()
                 firebaseFirestore.collection("users").document(phoneNumber).get()
                     .addOnSuccessListener {
                         if (it.exists()) {
@@ -134,22 +96,47 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                             var isCurrentUser: Boolean =
                                 emptyUser?.deviceId?.let { it1 -> checkDeviceId(it1) } == true
                             if (isCurrentUser) {
-                                val user = User(username, phoneNumber, "", pinNumber, userId)
-                                addImage(phoneNumber, user)
-                                checkIsAdmin(phoneNumber)
+                                if (!emptyUser?.pin.isNullOrBlank() && emptyUser?.pin != pinNumber) {
+                                    myDialog.dismissDialog()
+                                    Toast.makeText(
+                                        context,
+                                        "Pin xato kiritilgan!!!",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                } else if (emptyUser?.isActive != null && emptyUser?.isActive == false) {
+                                    myDialog.dismissDialog()
+                                    Toast.makeText(
+                                        context,
+                                        "Siz admin tomonidan o'chirilgansiz!!!",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                } else {
+                                    val user =
+                                        User(
+                                            CyrillicLatinConverter.ctl(username),
+                                            phoneNumber,
+                                            "",
+                                            pinNumber,
+                                            userId,
+                                            true
+                                        )
+                                    addImage(phoneNumber, user)
+                                    checkIsAdmin(phoneNumber)
+                                }
                             } else {
                                 Toast.makeText(
                                     context,
                                     "Bu telefon raqam oldin boshqa qurilmada registratsiyadan o'tgan!!!",
                                     Toast.LENGTH_SHORT
                                 ).show()
+                                myDialog.dismissDialog()
                             }
                         } else {
-                            dialog.dismiss()
+                            myDialog.dismissDialog()
                             requireView().snackBar("Bu telefon raqam admin tomondan qo'shilmagan")
                         }
                     }.addOnFailureListener {
-                        dialog.dismiss()
+                        myDialog.dismissDialog()
                         requireView().snackBar("Internet bilan bog'lanishda uzilishlar bor!!!")
                     }
             }
@@ -157,6 +144,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun checkDeviceId(deviceId: String): Boolean {
+//        Check user device id
         if (deviceId.isEmpty())
             return true
         else if (deviceId == userId) {
@@ -166,6 +154,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun addImage(phoneNumber: String, user: User) {
+//        add the user image
         val uploadTask =
             referenceStorage.child("$phoneNumber.jpg").putFile(imageUri)
         uploadTask.addOnSuccessListener { it ->
@@ -190,35 +179,38 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                             binding.numberEdit.setText("")
                             binding.passwordEdit.setText("")
                             boolean = false
-                            Permanent.phoneNumber = user.phoneNumber ?: ""
                             var editorRegister = sharedPreferencesRegister.edit()
                             editorRegister.putBoolean(Permanent.REGISTER_KEY, true)
                             editorRegister.apply()
                             var editPhone = sharedPreferencesPhone.edit()
                             editPhone.putString(Permanent.PHONE_KEY, user.phoneNumber)
                             editPhone.apply()
+                            Permanent.phoneNumber = user.phoneNumber ?: ""
                             binding.imagePerson.setImageURI(null)
-                            dialog.dismiss()
+                            myDialog.dismissDialog()
                             findNavController().popBackStack()
                             findNavController().navigate(R.id.homeFragment)
                         }?.addOnFailureListener {
-                            dialog.dismiss()
+                            myDialog.dismissDialog()
                             Toast.makeText(context, it.message, Toast.LENGTH_SHORT)
                                 .show()
                         }
                 }
                 downloadUrl?.addOnFailureListener {
-                    dialog.dismiss()
+                    myDialog.dismissDialog()
                     Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
                 }
             }
         }.addOnFailureListener {
-            dialog.dismiss()
+            myDialog.dismissDialog()
             Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun checkEmpty(username: String, phoneNumber: String, pinNumber: String): Boolean {
+
+//        check the user fields for empty
+
         binding.apply {
             if (TextUtils.isEmpty(username)) {
                 nameEdit.error
@@ -252,12 +244,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun checkIsAdmin(phoneNumber: String) {
+//        check the user is admin
         firebaseFirestore.collection("admin").document(phoneNumber).get().addOnSuccessListener {
-            if (it.exists()) {
-                Permanent.isAdmin = true
-            } else {
-                Permanent.isAdmin = true
-            }
+            Permanent.isAdmin = it.exists()
         }
     }
 }

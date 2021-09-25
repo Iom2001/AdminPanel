@@ -4,11 +4,7 @@
 
     <item
         android:id="@+id/action_crick"
-        android:title="Elonni to'xtatish"
+        android:title="Elonni xaritadan ko'rish"
         app:showAsAction="never" />
 
-    <item
-        android:id="@+id/action_ftbal"
-        android:title="Elonni o'chirish"
-        app:showAsAction="never" />
 </menu>

@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/back_color"
     tools:context=".ui.AddUserFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@color/teal_200">
+        android:background="@color/purple_500">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -21,7 +22,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Add User"
+                android:text="@string/add_user"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp"
                 app:layout_constraintBottom_toBottomOf="parent"

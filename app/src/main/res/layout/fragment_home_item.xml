@@ -1,272 +1,465 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:background="#F3F3F3"
     tools:context=".ui.HomeItemFragment">
 
-    <androidx.cardview.widget.CardView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_180sdp"
-        app:cardCornerRadius="@dimen/_12sdp"
-        app:cardElevation="@dimen/_8sdp"
-        android:layout_margin="@dimen/_12sdp">
+        android:layout_height="match_parent"
+        android:background="@color/back_color"
+        android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/iv_home"
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:src="@drawable/home_image"
-            android:scaleType="centerCrop"
-            />
+            android:layout_height="@dimen/_180sdp"
+            android:layout_margin="@dimen/_12sdp"
+            app:cardCornerRadius="@dimen/_5sdp">
 
-    </androidx.cardview.widget.CardView>
-    
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_12sdp"
-        android:layout_marginEnd="@dimen/_12sdp"
-        app:cardCornerRadius="@dimen/_16sdp">
-        
-        <androidx.core.widget.NestedScrollView
+            <com.synnapps.carouselview.CarouselView
+                android:id="@+id/carouselView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:fillColor="#FFFFFFFF"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:pageColor="#00000000"
+                app:radius="6dp"
+                app:slideInterval="3000"
+                app:strokeColor="#FF777777"
+                app:strokeWidth="2dp" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:cardCornerRadius="@dimen/_16sdp">
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginEnd="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_8sdp">
+                android:padding="@dimen/_20sdp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/created_time_tv"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:text="14-09-2021 07:09:88"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_11sdp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Mulk turi : "
-                        android:textSize="@dimen/_16sdp"
-                        android:textColor="@color/black"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Ijara"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/_16sdp"
-                        android:textColor="@color/black"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/type_tv"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Kvartira sotiladi"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/created_time_tv" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Bino holati : "
-                        android:textSize="@dimen/_16sdp"
-                        android:textColor="@color/black"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Yaxwi"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/_16sdp"
-                        android:textColor="@color/black"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/user_phone_number"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="+998 (97) 167-77-40"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/type_tv" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Uy turi : "
-                        android:textSize="@dimen/_16sdp"
-                        android:textColor="@color/black"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Kvartira"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/_16sdp"
-                        android:textColor="@color/black"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/price_tv"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="50 000 $"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="normal|bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Manzil : "
-                        android:layout_gravity="center_vertical"
-                        android:textSize="@dimen/_16sdp"
-                        android:textColor="@color/black"
-                        />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:cardCornerRadius="@dimen/_16sdp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_17sdp">
+
+                <TextView
+                    android:id="@+id/room_count_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/text_view_back"
+                    android:fontFamily="@font/poppins"
+                    android:paddingHorizontal="@dimen/_6sdp"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_4sdp"
+                    android:text="Xonalar soni: 5"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/condition_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:background="@drawable/text_view_back"
+                    android:fontFamily="@font/poppins"
+                    android:paddingHorizontal="@dimen/_6sdp"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_4sdp"
+                    android:text="Xolati: Yaxshi"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toEndOf="@+id/room_count_tv"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/total_floor_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/text_view_back"
+                    android:fontFamily="@font/poppins"
+                    android:paddingHorizontal="@dimen/_6sdp"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_4sdp"
+                    android:text="Bino qavati: 12"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/room_count_tv" />
+
+                <TextView
+                    android:id="@+id/floor_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/text_view_back"
+                    android:fontFamily="@font/poppins"
+                    android:paddingHorizontal="@dimen/_6sdp"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_4sdp"
+                    android:text="Uyning qavati: 9"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toEndOf="@+id/total_floor_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/condition_tv" />
+
+                <TextView
+                    android:id="@+id/foundation_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/text_view_back"
+                    android:fontFamily="@font/poppins"
+                    android:paddingHorizontal="@dimen/_6sdp"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_4sdp"
+                    android:text="Bino qurilish turi: Panelli"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/total_floor_tv" />
+
+                <TextView
+                    android:id="@+id/have_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/text_view_back"
+                    android:fontFamily="@font/poppins"
+                    android:paddingHorizontal="@dimen/_6sdp"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_4sdp"
+                    android:text="Uyda bor: Konditsioner, Kir yuvish mashinasi"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/foundation_tv" />
+
+                <TextView
+                    android:id="@+id/near_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/text_view_back"
+                    android:fontFamily="@font/poppins"
+                    android:paddingHorizontal="@dimen/_6sdp"
+                    android:paddingTop="@dimen/_4sdp"
+                    android:paddingBottom="@dimen/_4sdp"
+                    android:text="Uyga yaqin: Bog'cha, Stadion, Metro"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/have_tv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            app:cardCornerRadius="@dimen/_16sdp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/_15sdp">
+
+                <TextView
+                    android:id="@+id/tavsif_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="@string/tavsif"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold|normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/desc_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_6sdp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Uy sotiladi hamma sharoitlari bor"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tavsif_tv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_12sdp"
+            app:cardCornerRadius="@dimen/_16sdp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/_20sdp">
+
+                <TextView
+                    android:id="@+id/phone_number_username_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center"
+                    android:text="+998 (97) 168-77-40\nIslomjon"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="bold|normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.12" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="@dimen/_45sdp"
+                    android:layout_height="@dimen/_45sdp"
+                    android:elevation="0dp"
+                    app:cardCornerRadius="@dimen/_20sdp"
+                    app:cardElevation="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.1">
 
                     <ImageView
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/person" />
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@+id/call_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:background="@drawable/edit_back"
+                    android:fontFamily="@font/poppins_medium"
+                    android:paddingHorizontal="@dimen/_30sdp"
+                    android:paddingTop="@dimen/_7sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:text="@string/qo_ng_iroq_qilish"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_13sdp"
+                    android:textStyle="bold|normal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/phone_number_username_tv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_marginEnd="@dimen/_12sdp"
+            android:layout_marginBottom="@dimen/_12sdp"
+            app:cardCornerRadius="@dimen/_16sdp">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/_20sdp">
+
+                <ImageView
+                    android:id="@+id/location_img"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:src="@drawable/ic_baseline_location_on_24"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/address_region_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:maxLines="2"
+                    android:text="@string/manzil"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_16sdp"
+                    app:layout_constraintEnd_toStartOf="@+id/map_card"
+                    app:layout_constraintStart_toEndOf="@+id/location_img"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/map_card"
+                    android:layout_width="@dimen/_80sdp"
+                    android:layout_height="@dimen/_60sdp"
+                    app:cardCornerRadius="@dimen/_8sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/map_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:layout_marginStart="@dimen/_12sdp"
-                        android:layout_marginEnd="@dimen/_12sdp"
-                        android:layout_height="@dimen/_60sdp"
-                        android:src="@drawable/image_map"
                         android:scaleType="centerCrop"
-                        />
+                        android:src="@drawable/image_map" />
+                </androidx.cardview.widget.CardView>
 
-                </LinearLayout>
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/address_tv"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Toshkent shahar yunis obod 4-kvartil"
+                    android:textColor="@color/text_color"
+                    android:textSize="@dimen/_14sdp"
+                    android:textStyle="normal"
+                    app:layout_constraintTop_toBottomOf="@+id/map_card" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Xonalar soni : "
-                        android:textSize="@dimen/_16sdp"
-                        android:textColor="@color/black"
-                        />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="5"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/_16sdp"
-                        android:textColor="@color/black"
-                        />
+        </androidx.cardview.widget.CardView>
 
-                </LinearLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/button_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="@dimen/_20sdp"
+            android:visibility="gone">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/dis_active_btn"
+                android:layout_width="@dimen/_110sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/dis_active_btn_back"
+                android:text="Elonni to'xtatish"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Yashahs maydoni : "
-                        android:textSize="@dimen/_16sdp"
-                        android:textColor="@color/black"
-                        />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/delete_btn"
+                android:layout_width="@dimen/_110sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:background="@drawable/delete_btn_back"
+                android:text="Elonni o'chirish"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/dis_active_btn"
+                app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="3 sotix"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/_16sdp"
-                        android:textColor="@color/black"
-                        />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                </LinearLayout>
+    </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Umumiy qavat : "
-                        android:textSize="@dimen/_16sdp"
-                        android:textColor="@color/black"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="5"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/_16sdp"
-                        android:textColor="@color/black"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Uyning qavati : "
-                        android:textSize="@dimen/_16sdp"
-                        android:textColor="@color/black"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="3"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/_16sdp"
-                        android:textColor="@color/black"
-                        />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginBottom="@dimen/_8sdp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Telefon nomer : +998 "
-                        android:textSize="@dimen/_16sdp"
-                        android:textColor="@color/black"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="99 793 96 96"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/_16sdp"
-                        android:textColor="@color/black"
-                        />
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        </androidx.core.widget.NestedScrollView>
-        
-    </androidx.cardview.widget.CardView>
-
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>

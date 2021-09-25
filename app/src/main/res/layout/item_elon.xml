@@ -2,28 +2,29 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_75sdp">
+    android:layout_height="wrap_content"
+    android:background="@color/back_color">
 
     <ImageView
         android:id="@+id/home_image"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_65sdp"
         android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
         android:scaleType="centerCrop"
         android:src="@drawable/home_placeholder"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_65sdp"
         app:layout_constraintEnd_toStartOf="@+id/image_more"
         app:layout_constraintStart_toEndOf="@+id/home_image"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/name"
+            android:id="@+id/type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_10sdp"
@@ -45,13 +46,13 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:fontFamily="@font/poppins_medium"
             android:gravity="center_vertical|end"
-            android:text="100000 so'm"
+            android:text="100000 $"
             android:textColor="@color/text_color"
             android:textSize="@dimen/_10sdp"
             app:layout_constraintBottom_toTopOf="@+id/created_time"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name" />
+            app:layout_constraintTop_toBottomOf="@+id/type" />
 
         <TextView
             android:id="@+id/created_time"
@@ -70,9 +71,50 @@
     <ImageView
         android:id="@+id/image_more"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/_65sdp"
         android:layout_marginEnd="@dimen/_5sdp"
         android:src="@drawable/ic_baseline_more_vert_24"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/_3sdp"
+        android:paddingBottom="@dimen/_5sdp"
+        app:layout_constraintTop_toBottomOf="@id/home_image">
+
+        <TextView
+            android:id="@+id/info_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color" />
+
+        <TextView
+            android:id="@+id/have_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color" />
+
+        <TextView
+            android:id="@+id/near_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color" />
+
+        <TextView
+            android:id="@+id/desc_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_color" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#36000000"
+        app:layout_constraintBottom_toBottomOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

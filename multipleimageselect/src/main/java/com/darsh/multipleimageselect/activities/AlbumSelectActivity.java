@@ -20,7 +20,6 @@ import android.widget.GridView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.widget.Toolbar;
 import com.darsh.multipleimageselect.R;
 import com.darsh.multipleimageselect.adapters.CustomAlbumSelectAdapter;
 import com.darsh.multipleimageselect.helpers.Constants;

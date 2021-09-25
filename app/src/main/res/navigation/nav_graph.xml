@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/languageFragment">
 
     <fragment
         android:id="@+id/passwordFragment"
@@ -14,6 +14,7 @@
             android:id="@+id/action_passwordFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="uz.creator.adminpanel.ui.auth.LoginFragment"
@@ -28,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/galeryFragment"
-        android:name="uz.creator.adminpanel.ui.GaleryFragment"
+        android:name="uz.creator.adminpanel.ui.GalleryFragment"
         android:label="fragment_galery"
         tools:layout="@layout/fragment_galery">
         <action
@@ -49,24 +50,40 @@
         <action
             android:id="@+id/action_homeFragment_to_addUserFragment"
             app:destination="@id/addUserFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_homeListFragment"
+            app:destination="@id/homeListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_editHomeFragment"
+            app:destination="@id/editHomeFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_statisticsFragment"
+            app:destination="@id/statisticsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_editPinFragment"
+            app:destination="@id/editPinFragment" />
     </fragment>
     <fragment
         android:id="@+id/elonFragment"
         android:name="uz.creator.adminpanel.ui.elon.ElonFragment"
         android:label="fragment_elon"
-        tools:layout="@layout/fragment_elon" />
+        tools:layout="@layout/fragment_elon">
+        <action
+            android:id="@+id/action_elonFragment_to_addElonFragment"
+            app:destination="@id/addElonFragment" />
+    </fragment>
     <fragment
         android:id="@+id/newAddElonFragment"
-        android:name="uz.creator.adminpanel.ui.home._addElon.NewAddElonFragment"
+        android:name="uz.creator.adminpanel.ui.home._addHome.NewAddHomeFragment"
         android:label="fragment_new_add_elon"
-        tools:layout="@layout/fragment_new_add_elon">
+        tools:layout="@layout/fragment_new_add_home">
         <action
             android:id="@+id/action_newAddElonFragment_to_mapFragment"
             app:destination="@id/mapFragment" />
     </fragment>
     <fragment
         android:id="@+id/mapFragment"
-        android:name="uz.creator.adminpanel.ui.home._addElon.MapFragment"
+        android:name="uz.creator.adminpanel.ui.home._addHome.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
     <fragment
@@ -84,5 +101,43 @@
         android:name="uz.creator.adminpanel.ui.HomeItemFragment"
         android:label="fragment_home_item"
         tools:layout="@layout/fragment_home_item" />
+    <fragment
+        android:id="@+id/editHomeFragment"
+        android:name="uz.creator.adminpanel.ui.home._editHome.EditHomeFragment"
+        android:label="fragment_edit_home"
+        tools:layout="@layout/fragment_edit_home">
+        <action
+            android:id="@+id/action_editHomeFragment_to_mapFragment"
+            app:destination="@id/mapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeListFragment"
+        android:name="uz.creator.adminpanel.ui.home._editHome.HomeListFragment"
+        android:label="fragment_home_list"
+        tools:layout="@layout/fragment_home_list" />
+    <fragment
+        android:id="@+id/addElonFragment"
+        android:name="uz.creator.adminpanel.ui.elon.AddElonFragment"
+        android:label="fragment_add_elon"
+        tools:layout="@layout/fragment_add_elon" />
+    <fragment
+        android:id="@+id/statisticsFragment"
+        android:name="uz.creator.adminpanel.ui.home.StatisticsFragment"
+        android:label="fragment_statistics"
+        tools:layout="@layout/fragment_statistics" />
+    <fragment
+        android:id="@+id/editPinFragment"
+        android:name="uz.creator.adminpanel.ui.editPin.EditPinFragment"
+        android:label="fragment_edit_pin"
+        tools:layout="@layout/fragment_edit_pin" />
+    <fragment
+        android:id="@+id/languageFragment"
+        android:name="uz.creator.adminpanel.ui.LanguageFragment"
+        android:label="fragment_language"
+        tools:layout="@layout/fragment_language">
+        <action
+            android:id="@+id/action_languageFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 
 </navigation>

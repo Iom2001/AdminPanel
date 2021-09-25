@@ -12,8 +12,8 @@ fun Context.showToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 }
 
-fun View.snackBar(message:String){
-    Snackbar.make(this,message, Snackbar.LENGTH_SHORT).show()
+fun View.snackBar(message: String) {
+    Snackbar.make(this, message, Snackbar.LENGTH_SHORT).show()
 }
 
 fun View.onClick(listener: (View) -> Unit) {

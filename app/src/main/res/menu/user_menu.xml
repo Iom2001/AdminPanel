@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/dis_active_user_btn"
+        android:title="Userni to'xtatish"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/delete_user_btn"
+        android:title="Userni o'chirish"
+        app:showAsAction="never" />
+</menu>

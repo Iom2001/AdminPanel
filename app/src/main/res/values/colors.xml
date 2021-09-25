@@ -5,13 +5,17 @@
     <color name="colorPrimaryDark" tools:ignore="MissingDefaultResource">#1B5E20</color>
     <color name="multiple_image_select_primaryLight">#C8E6C9</color>
     <color name="colorAccent">#4CAF50</color>
-    <color name="purple_200">#2E7D32</color>
-    <color name="purple_500">#2E7D32</color>
-    <color name="purple_700">#4CAF50</color>
-    <color name="teal_200">#4CAF50</color>
-    <color name="teal_700">#4CAF50</color>
+    <color name="purple_200">#81D4FA</color>
+    <color name="purple_500">#03A9F4</color>
+    <color name="purple_700">#0288D1</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="text_color">#2D3A45</color>
     <color name="grey">#8D9BA8</color>
+    <color name="back_color">#F4FBFF</color>
+    <color name="back_color_pink">#FFE4E4</color>
+    <color name="red">#F44336</color>
+
 </resources>

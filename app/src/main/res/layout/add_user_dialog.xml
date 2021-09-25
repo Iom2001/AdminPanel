@@ -10,7 +10,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="#F4FBFF"
+        app:cardBackgroundColor="@color/back_color"
         app:cardCornerRadius="20dp"
         app:cardElevation="0dp">
 
@@ -39,6 +39,7 @@
                     android:hint="1234567890"
                     android:inputType="number"
                     android:paddingStart="20dp"
+                    android:paddingEnd="0dp"
                     app:allowed_chars="1234567890"
                     app:keep_hint="true"
                     app:mask="+998 (##) ###-##-##" />
@@ -52,7 +53,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_10sdp"
                 android:layout_toStartOf="@+id/add_btn"
-                android:text="Cancel"
+                android:text="@string/cancel"
                 android:textAllCaps="false"
                 android:textSize="@dimen/_11sdp" />
 
@@ -63,7 +64,7 @@
                 android:layout_below="@+id/number_card"
                 android:layout_alignParentEnd="true"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:text="Add"
+                android:text="@string/add"
                 android:textAllCaps="false"
                 android:textSize="@dimen/_11sdp" />
 

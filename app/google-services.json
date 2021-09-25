@@ -1,33 +1,41 @@
 {
   "project_info": {
-    "project_number": "279966051757",
-    "project_id": "admin-panel-c91d7",
-    "storage_bucket": "admin-panel-c91d7.appspot.com"
+    "project_number": "713276782481",
+    "project_id": "admin-panel-494d2",
+    "storage_bucket": "admin-panel-494d2.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:279966051757:android:a6a6f461ae09d1e4564524",
+        "mobilesdk_app_id": "1:713276782481:android:41b79fc7c0abcd6e320c30",
         "android_client_info": {
           "package_name": "uz.creator.adminpanel"
         }
       },
       "oauth_client": [
         {
-          "client_id": "279966051757-67gbu2snvtpgjtphts0ec4lesbct1uhb.apps.googleusercontent.com",
+          "client_id": "713276782481-p54k9pamk27lk8eeqvtuu9kpg02tui3b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "uz.creator.adminpanel",
+            "certificate_hash": "9331923cdef3b54e9bf7c72d2a78544827a4655f"
+          }
+        },
+        {
+          "client_id": "713276782481-a572nm7h6ciif9f36lvs3ip14oskuakv.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAjQkARe2cWGqvKUr2mlHHB6EW1-Rlc1E8"
+          "current_key": "AIzaSyCUUkj7K54wbdUZZ8sPv3JrrXTVJhBURh8"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "279966051757-67gbu2snvtpgjtphts0ec4lesbct1uhb.apps.googleusercontent.com",
+              "client_id": "713276782481-a572nm7h6ciif9f36lvs3ip14oskuakv.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

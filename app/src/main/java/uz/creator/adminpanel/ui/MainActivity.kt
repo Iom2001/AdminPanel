@@ -1,55 +1,52 @@
 package uz.creator.adminpanel.ui
 
+import android.content.Context
+import android.content.ContextWrapper
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import uz.creator.adminpanel.R
 import uz.creator.adminpanel.databinding.ActivityMainBinding
-import uz.creator.adminpanel.repository.AdminRepository
-import uz.creator.adminpanel.viewmodel.AdminViewModel
-import uz.creator.adminpanel.viewmodel.AdminViewModelProviderFactory
+import uz.creator.adminpanel.utils.ContextUtils
+import uz.creator.adminpanel.utils.Permanent
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var viewModel: AdminViewModel
     private lateinit var binding: ActivityMainBinding
+
+    override fun attachBaseContext(newBase: Context) {
+//        set up language
+        var localeToSwitchTo: Locale = if (Permanent.isKiril) {
+            Locale("uz")
+        } else {
+            Locale("en")
+        }
+        val localeUpdatedContext: ContextWrapper =
+            ContextUtils.updateLocale(newBase, localeToSwitchTo)
+        super.attachBaseContext(localeUpdatedContext)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val newsRepository = AdminRepository()
-        val viewModelProviderFactory = AdminViewModelProviderFactory(application, newsRepository)
-        viewModel =
-            ViewModelProvider(this, viewModelProviderFactory)[AdminViewModel::class.java]
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
         val navController = findNavController(R.id.fragmentContainerView)
-        //  setLanguage(Language.getLanguage())
+
         binding.bottomNavigationView.setupWithNavController(navController)
 
+//        Listen the fragment
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.loginFragment -> {
-                    hideBottomNav()
-                }
-                R.id.newAddElonFragment -> {
-                    hideBottomNav()
-                }
-                R.id.passwordFragment -> {
-                    hideBottomNav()
-                }
-                R.id.addUserFragment -> {
-                    hideBottomNav()
-                }
-                R.id.mapFragment -> {
-                    hideBottomNav()
+                R.id.homeFragment -> {
+                    showBottomNav()
                 }
                 else -> {
-                    showBottomNav()
+                    hideBottomNav()
                 }
             }
         }
