@@ -7,4 +7,9 @@
         android:title="Elonni xaritadan ko'rish"
         app:showAsAction="never" />
 
+    <item
+        android:id="@+id/action_filter"
+        android:title="Elonni filterlash"
+        app:showAsAction="never" />
+
 </menu>

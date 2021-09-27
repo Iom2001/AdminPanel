@@ -20,6 +20,8 @@ data class Advertise(
     var totalFloor: Int? = null,
     var foundation: String? = null,
     var createdTime: String? = null,
+    var totalArea: String? = null,
+    var livingArea: String? = null,
     var checkedItemsHave: List<Boolean>? = null,
     var checkedItemsNear: List<Boolean>? = null,
 ) : Serializable

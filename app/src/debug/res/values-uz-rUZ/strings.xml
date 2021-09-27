@@ -15,7 +15,7 @@
     <string name="qurilish_turi">Тип конструкции</string>
     <string name="malumotlarni_yuklash">Загрузить данные</string>
     <string name="uyning_narxi">Цена дома</string>
-    <string name="uy_xaqida_malumot">Домашня информация</string>
+    <string name="uy_xaqida_malumot">Домашнее местоположение и домашняя информация</string>
     <string name="manzil_tanlash">Выбор адреса</string>
     <string name="yaqinida_joylashgan">Рядом</string>
     <string name="uyda_bor">Дома</string>
@@ -51,4 +51,6 @@
     <string name="version_1_0">Version 1.0</string>
     <string name="manzilni_tanlang">Выбрать местоположение</string>
     <string name="add_home">Добавить дом</string>
+    <string name="uyning_maydoni">Площадь дома</string>
+    <string name="yashash_maydoni">Жизненное пространство</string>
 </resources>

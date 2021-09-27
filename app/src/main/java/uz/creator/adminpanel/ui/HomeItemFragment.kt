@@ -243,6 +243,10 @@ class HomeItemFragment : Fragment() {
             binding.floorTv.text = CyrillicLatinConverter.ltc("Uyning qavati: ${advertise.floor}")
             binding.foundationTv.text =
                 CyrillicLatinConverter.ltc("Bino qurilish turi: ${advertise.foundation}")
+            binding.totalAreaTv.text =
+                CyrillicLatinConverter.ltc("Uyning maydoni: ${advertise.totalArea} m\\u00B2")
+            binding.livingAreaTv.text =
+                CyrillicLatinConverter.ltc("Yashash maydoni: ${advertise.livingArea} m\\u00B2")
             binding.descTv.text = advertise.homeDesc?.let { CyrillicLatinConverter.ltc(it) }
             binding.phoneNumberUsernameTv.text =
                 CyrillicLatinConverter.ltc("${advertise.homePhoneNumber}\n${advertise.name}")
@@ -260,6 +264,10 @@ class HomeItemFragment : Fragment() {
             binding.totalFloorTv.text = "Bino qavati: ${advertise.totalFloor}"
             binding.floorTv.text = "Uyning qavati: ${advertise.floor}"
             binding.foundationTv.text = "Bino qurilish turi: ${advertise.foundation}"
+            binding.totalAreaTv.text =
+                "Uyning maydoni: ${advertise.totalArea} m.kv"
+            binding.livingAreaTv.text =
+                "Yashash maydoni: ${advertise.livingArea} m.kv"
             binding.descTv.text = advertise.homeDesc
             binding.phoneNumberUsernameTv.text = "${advertise.homePhoneNumber}\n${advertise.name}"
             binding.addressTv.text = advertise.address

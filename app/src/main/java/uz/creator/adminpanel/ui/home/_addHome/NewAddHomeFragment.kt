@@ -154,6 +154,8 @@ class NewAddHomeFragment : Fragment() {
                 val foundation = CyrillicLatinConverter.ctl(binding.foundation.text.toString())
                 val totalFloor = binding.totalFloor.text.toString()
                 val floor = binding.floor.text.toString()
+                val totalArea = binding.totalArea.text.toString()
+                val livingArea = binding.livingArea.text.toString()
                 val desc = CyrillicLatinConverter.ctl(binding.homeDescEditText.text.toString())
                 val address = CyrillicLatinConverter.ctl(binding.addressEditText.text.toString())
                 val price = binding.priceEditText.text.toString()
@@ -196,6 +198,8 @@ class NewAddHomeFragment : Fragment() {
                     totalFloor.toInt(),
                     foundation,
                     currentDT,
+                    totalArea,
+                    livingArea,
                     haveList,
                     nearList,
                 )
@@ -294,6 +298,8 @@ class NewAddHomeFragment : Fragment() {
         val foundation = binding.foundation.text.toString()
         val totalFloor = binding.totalFloor.text.toString()
         val floor = binding.floor.text.toString()
+        val totalArea = binding.totalArea.text.toString()
+        val livingArea = binding.livingArea.text.toString()
         val desc = binding.homeDescEditText.text.toString()
         val address = binding.addressEditText.text.toString()
         val price = binding.priceEditText.text.toString()
@@ -340,6 +346,18 @@ class NewAddHomeFragment : Fragment() {
             return false
         } else {
             binding.floorLayout.error = null
+        }
+        if (totalArea.isBlank()) {
+            binding.totalAreaLayout.error = "Fill the blank!!!"
+            return false
+        } else {
+            binding.totalAreaLayout.error = null
+        }
+        if (livingArea.isBlank()) {
+            binding.livingAreaLayout.error = "Fill the blank!!!"
+            return false
+        } else {
+            binding.livingAreaLayout.error = null
         }
         if (!this::addressModel.isInitialized) {
             requireView().snackBar("Select a location on the map!!!")

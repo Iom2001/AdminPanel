@@ -368,7 +368,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_12sdp"
-            android:text="@string/uyning_qavati"
+            android:text="@string/bino_qavatliligi"
             android:textColor="@color/text_color"
             android:textSize="@dimen/_15sdp"
             android:textStyle="bold"
@@ -423,8 +423,8 @@
                     android:inputType="number"
                     android:maxLength="3"
                     android:maxLines="1"
-                    android:paddingEnd="0dp"
                     android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="0dp"
                     android:textColor="@color/text_color" />
 
             </androidx.cardview.widget.CardView>
@@ -445,9 +445,9 @@
                     android:background="#0D000000"
                     android:inputType="number"
                     android:maxLength="3"
-                    android:paddingEnd="0dp"
                     android:maxLines="1"
                     android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="0dp"
                     android:textColor="@color/text_color" />
 
             </androidx.cardview.widget.CardView>

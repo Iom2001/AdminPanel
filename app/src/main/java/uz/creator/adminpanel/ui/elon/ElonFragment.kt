@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
@@ -16,6 +17,8 @@ import uz.creator.adminpanel.R
 import uz.creator.adminpanel.adapters.ElonAdapter
 import uz.creator.adminpanel.databinding.FragmentElonBinding
 import uz.creator.adminpanel.models.Elon
+import uz.creator.adminpanel.models.FilterModel
+import uz.creator.adminpanel.ui.ShareFilterModel
 import uz.creator.adminpanel.utils.MyDialog
 import uz.creator.adminpanel.utils.Permanent
 import uz.creator.adminpanel.utils.showToast
@@ -88,6 +91,26 @@ class ElonFragment : Fragment() {
                                 .addOnFailureListener { e ->
                                     requireView().snackBar("Failed!!! ${e.message}")
                                 }
+                        }
+
+                        R.id.action_filter -> {
+                            val filterModel =
+                                FilterModel(type = elon.type, homeType = elon.homeType)
+                            if (elon.price!!.toInt() >= 5000) {
+                                filterModel.startPrice = (elon.price!!.toInt() - 5000).toString()
+                                filterModel.endPrice = (elon.price!!.toInt() + 5000).toString()
+                            } else {
+                                filterModel.startPrice = "0"
+                                filterModel.endPrice = (elon.price!!.toInt() + 5000).toString()
+                            }
+                            if (!elon.homeDesc.isNullOrBlank()) {
+                                filterModel.searchText = elon.homeDesc
+                            }
+                            ViewModelProvider(requireActivity())[ShareFilterModel::class.java].setData(
+                                filterModel
+                            )
+                            findNavController().popBackStack()
+                            findNavController().navigate(R.id.galeryFragment)
                         }
                     }
                     true

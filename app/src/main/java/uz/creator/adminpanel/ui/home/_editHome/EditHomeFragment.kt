@@ -291,7 +291,7 @@ class EditHomeFragment : Fragment() {
     }
 
     private fun checkEmpty(): Boolean {
-//        check the home fields
+
         val type = binding.type.text.toString()
         val homeType = binding.homeType.text.toString()
         val condition = binding.condition.text.toString()
@@ -299,6 +299,8 @@ class EditHomeFragment : Fragment() {
         val foundation = binding.foundation.text.toString()
         val totalFloor = binding.totalFloor.text.toString()
         val floor = binding.floor.text.toString()
+        val totalArea = binding.totalArea.text.toString()
+        val livingArea = binding.livingArea.text.toString()
         val desc = binding.homeDescEditText.text.toString()
         val address = binding.addressEditText.text.toString()
         val price = binding.priceEditText.text.toString()
@@ -346,6 +348,18 @@ class EditHomeFragment : Fragment() {
         } else {
             binding.floorLayout.error = null
         }
+        if (totalArea.isBlank()) {
+            binding.totalAreaLayout.error = "Fill the blank!!!"
+            return false
+        } else {
+            binding.totalAreaLayout.error = null
+        }
+        if (livingArea.isBlank()) {
+            binding.livingAreaLayout.error = "Fill the blank!!!"
+            return false
+        } else {
+            binding.livingAreaLayout.error = null
+        }
         if (!this::addressModel.isInitialized) {
             requireView().snackBar("Select a location on the map!!!")
             return false
@@ -375,10 +389,10 @@ class EditHomeFragment : Fragment() {
             binding.nameLayout.error = null
         }
         if (homePhone.length != 19) {
-            binding.foundationLayout.error = "Fill the phone number!!!"
+            binding.numberLayout.error = "Fill the phone number!!!"
             return false
         } else {
-            binding.foundationLayout.error = null
+            binding.numberLayout.error = null
         }
         return true
     }
@@ -396,26 +410,24 @@ class EditHomeFragment : Fragment() {
     }
 
     private fun setUpAnotherUi() {
+        binding.floor.setText(advertise?.floor.toString())
+        binding.totalFloor.setText(advertise?.totalFloor.toString())
+        binding.priceEditText.setText(advertise?.price.toString())
+        binding.numberEditText.setText(advertise?.homePhoneNumber?.substring(4))
+        binding.totalArea.setText(advertise?.totalArea)
+        binding.livingArea.setText(advertise?.livingArea)
         if (Permanent.isKiril) {
-            binding.floor.setText(advertise?.floor.toString())
-            binding.totalFloor.setText(advertise?.totalFloor.toString())
             binding.homeDescEditText.setText(advertise?.homeDesc?.let {
                 CyrillicLatinConverter.ltc(
                     it
                 )
             })
             binding.addressEditText.setText(advertise?.address?.let { CyrillicLatinConverter.ltc(it) })
-            binding.priceEditText.setText(advertise?.price.toString())
             binding.usernameEditText.setText(advertise?.name?.let { CyrillicLatinConverter.ltc(it) })
-            binding.numberEditText.setText(advertise?.homePhoneNumber?.substring(4))
         } else {
-            binding.floor.setText(advertise?.floor.toString())
-            binding.totalFloor.setText(advertise?.totalFloor.toString())
             binding.homeDescEditText.setText(advertise?.homeDesc)
             binding.addressEditText.setText(advertise?.address)
-            binding.priceEditText.setText(advertise?.price.toString())
             binding.usernameEditText.setText(advertise?.name)
-            binding.numberEditText.setText(advertise?.homePhoneNumber?.substring(4))
         }
     }
 

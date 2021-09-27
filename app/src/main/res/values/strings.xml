@@ -14,7 +14,7 @@
     <string name="qurilish_turi">Qurilish turi</string>
     <string name="malumotlarni_yuklash">Ma\'lumotlarni yuklash</string>
     <string name="uyning_narxi">Uyning narxi</string>
-    <string name="uy_xaqida_malumot">Uy xaqida malumot</string>
+    <string name="uy_xaqida_malumot">Uy joylashuvi va uy xaqida malumot</string>
     <string name="manzil_tanlash">Manzil tanlash</string>
     <string name="yaqinida_joylashgan">Yaqinida joylashgan</string>
     <string name="uyda_bor">Uyda bor</string>
@@ -50,6 +50,6 @@
     <string name="version_1_0">Version 1.0</string>
     <string name="manzilni_tanlang">Manzilni tanlang</string>
     <string name="add_home">Uy qo\'shish</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="uyning_maydoni">Uyning maydoni</string>
+    <string name="yashash_maydoni">Yashash maydoni</string>
 </resources>
