@@ -1,4 +1,4 @@
-package uz.creator.adminpanel.ui
+package uz.creator.adminpanel.ui.gallery._filterHome
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

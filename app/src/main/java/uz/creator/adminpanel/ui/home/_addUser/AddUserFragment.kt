@@ -1,4 +1,4 @@
-package uz.creator.adminpanel.ui
+package uz.creator.adminpanel.ui.home._addUser
 
 import android.app.AlertDialog
 import android.graphics.Color
@@ -14,6 +14,7 @@ import android.widget.PopupMenu
 import androidx.core.view.get
 import com.google.firebase.firestore.DocumentChange
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
 import uz.creator.adminpanel.R
 import uz.creator.adminpanel.adapters.UserAdapter
 import uz.creator.adminpanel.databinding.AddUserDialogBinding
@@ -118,6 +119,8 @@ class AddUserFragment : Fragment() {
                         R.id.delete_user_btn -> {
 //                            delete user
                             myDialog.showDialog()
+                            FirebaseStorage.getInstance().getReference("userImages")
+                                .child("${user.phoneNumber}.jpg").delete()
                             firebaseFirestore.collection("users")
                                 .document("${user.phoneNumber}")
                                 .delete()

@@ -18,7 +18,7 @@ import uz.creator.adminpanel.adapters.ElonAdapter
 import uz.creator.adminpanel.databinding.FragmentElonBinding
 import uz.creator.adminpanel.models.Elon
 import uz.creator.adminpanel.models.FilterModel
-import uz.creator.adminpanel.ui.ShareFilterModel
+import uz.creator.adminpanel.ui.gallery._filterHome.ShareFilterModel
 import uz.creator.adminpanel.utils.MyDialog
 import uz.creator.adminpanel.utils.Permanent
 import uz.creator.adminpanel.utils.showToast

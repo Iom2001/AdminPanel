@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import id.zelory.compressor.Compressor
 import kotlinx.coroutines.*
 import uz.creator.adminpanel.R
 import uz.creator.adminpanel.databinding.FragmentLoginBinding
@@ -72,8 +73,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
         referenceStorage = storage.getReference("userImages")
         firebaseFirestore = FirebaseFirestore.getInstance()
-//        firebaseFirestore.collection("admin").document("mainAdmin").set(User("Islomjon", ""))
-
 
         binding.getImage.setOnClickListener {
             pickImageFromNewGallery()
@@ -120,7 +119,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                                             userId,
                                             true
                                         )
-                                    addImage(phoneNumber, user)
+                                    runBlocking {
+                                        addImage(phoneNumber, user)
+                                    }
                                     checkIsAdmin(phoneNumber)
                                 }
                             } else {
@@ -153,57 +154,71 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         return false
     }
 
-    private fun addImage(phoneNumber: String, user: User) {
+    private suspend fun addImage(phoneNumber: String, user: User) {
+        coroutineScope {
 //        add the user image
-        val uploadTask =
-            referenceStorage.child("$phoneNumber.jpg").putFile(imageUri)
-        uploadTask.addOnSuccessListener { it ->
-            if (it.task.isSuccessful) {
-                val downloadUrl = it.metadata?.reference?.downloadUrl
-                downloadUrl?.addOnSuccessListener { imgUri ->
-                    user.imageUri = imgUri.toString()
-                    var fireStoreRef =
-                        user.phoneNumber?.let { it1 ->
-                            firebaseFirestore.collection("users").document(
-                                it1
+            val uploadTask =
+                referenceStorage.child("$phoneNumber.jpg").putFile(
+                    Uri.parse(
+                        "file://${
+                            Compressor.compress(
+                                requireContext(),
+                                FileUtilsForImage.from(
+                                    context,
+                                    imageUri
+                                )
                             )
-                        }
-                    fireStoreRef?.set(user)
-                        ?.addOnSuccessListener {
-                            Toast.makeText(
-                                context,
-                                "Data uploaded successfully!!!",
-                                Toast.LENGTH_SHORT
-                            ).show()
-                            binding.nameEdit.setText("")
-                            binding.numberEdit.setText("")
-                            binding.passwordEdit.setText("")
-                            boolean = false
-                            var editorRegister = sharedPreferencesRegister.edit()
-                            editorRegister.putBoolean(Permanent.REGISTER_KEY, true)
-                            editorRegister.apply()
-                            var editPhone = sharedPreferencesPhone.edit()
-                            editPhone.putString(Permanent.PHONE_KEY, user.phoneNumber)
-                            editPhone.apply()
-                            Permanent.phoneNumber = user.phoneNumber ?: ""
-                            binding.imagePerson.setImageURI(null)
-                            myDialog.dismissDialog()
-                            findNavController().popBackStack()
-                            findNavController().navigate(R.id.homeFragment)
-                        }?.addOnFailureListener {
-                            myDialog.dismissDialog()
-                            Toast.makeText(context, it.message, Toast.LENGTH_SHORT)
-                                .show()
-                        }
+                        }"
+                    )
+                )
+            uploadTask.addOnSuccessListener { it ->
+                if (it.task.isSuccessful) {
+                    val downloadUrl = it.metadata?.reference?.downloadUrl
+                    downloadUrl?.addOnSuccessListener { imgUri ->
+                        user.imageUri = imgUri.toString()
+                        var fireStoreRef =
+                            user.phoneNumber?.let { it1 ->
+                                firebaseFirestore.collection("users").document(
+                                    it1
+                                )
+                            }
+                        fireStoreRef?.set(user)
+                            ?.addOnSuccessListener {
+                                Toast.makeText(
+                                    context,
+                                    "Data uploaded successfully!!!",
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                binding.nameEdit.setText("")
+                                binding.numberEdit.setText("")
+                                binding.passwordEdit.setText("")
+                                boolean = false
+                                var editorRegister = sharedPreferencesRegister.edit()
+                                editorRegister.putBoolean(Permanent.REGISTER_KEY, true)
+                                editorRegister.apply()
+                                var editPhone = sharedPreferencesPhone.edit()
+                                editPhone.putString(Permanent.PHONE_KEY, user.phoneNumber)
+                                editPhone.apply()
+                                Permanent.phoneNumber = user.phoneNumber ?: ""
+                                binding.imagePerson.setImageURI(null)
+                                myDialog.dismissDialog()
+                                findNavController().popBackStack()
+                                findNavController().navigate(R.id.homeFragment)
+                            }?.addOnFailureListener {
+                                myDialog.dismissDialog()
+                                Toast.makeText(context, it.message, Toast.LENGTH_SHORT)
+                                    .show()
+                            }
+                    }
+                    downloadUrl?.addOnFailureListener {
+                        myDialog.dismissDialog()
+                        Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
+                    }
                 }
-                downloadUrl?.addOnFailureListener {
-                    myDialog.dismissDialog()
-                    Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
-                }
+            }.addOnFailureListener {
+                myDialog.dismissDialog()
+                Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
             }
-        }.addOnFailureListener {
-            myDialog.dismissDialog()
-            Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
         }
     }
 

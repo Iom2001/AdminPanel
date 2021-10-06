@@ -1,5 +1,6 @@
-package uz.creator.adminpanel.ui
+package uz.creator.adminpanel.ui.gallery._homeInfo
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -12,31 +13,31 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.synnapps.carouselview.ImageListener
 import uz.creator.adminpanel.R
-import uz.creator.adminpanel.databinding.FragmentHomeItemBinding
+import uz.creator.adminpanel.databinding.FragmentHomeInfoBinding
 import uz.creator.adminpanel.models.Advertise
-import uz.creator.adminpanel.utils.MyDialog
-import uz.creator.adminpanel.utils.Permanent
 import android.location.Geocoder
 import android.view.*
 import androidx.appcompat.app.AlertDialog
 import androidx.navigation.fragment.findNavController
 import uz.creator.adminpanel.databinding.CheckDialogBinding
-import uz.creator.adminpanel.utils.CyrillicLatinConverter
-import uz.creator.adminpanel.utils.snackBar
+import uz.creator.adminpanel.utils.*
 import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
 
-class HomeItemFragment : Fragment() {
 
-    private lateinit var binding: FragmentHomeItemBinding
+class HomeInfoFragment : Fragment() {
+
+    private var _binding: FragmentHomeInfoBinding? = null
+    private val binding get() = _binding!!
     private var date = ""
     private lateinit var firestore: FirebaseFirestore
     private lateinit var storage: FirebaseStorage
-    private var imageUriList = ArrayList<Uri>()
+    private val imageUriList = ArrayList<Uri>()
     private lateinit var advertise: Advertise
     private var phoneNumber: String = ""
     private lateinit var myDialog: MyDialog
+    private var imageDownloaded = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,18 +56,19 @@ class HomeItemFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentHomeItemBinding.inflate(layoutInflater, container, false)
+    ): View {
+        _binding = FragmentHomeInfoBinding.inflate(layoutInflater, container, false)
 //        Put default image
-        binding.carouselView.setImageListener(ImageListener { _, imageView ->
+        binding.carouselView.setImageListener { _, imageView ->
             Glide.with(requireContext()).load(R.drawable.home_placeholder).into(imageView)
-        })
+        }
         binding.carouselView.pageCount = 1
         firestore = FirebaseFirestore.getInstance()
         storage = FirebaseStorage.getInstance()
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -74,7 +76,14 @@ class HomeItemFragment : Fragment() {
         getAdvertise()
 
 //        get image from storage
-        getImageUriList(0)
+        if (imageUriList.size == 0) {
+            getImageUriList(0)
+        } else {
+            binding.carouselView.setImageListener(imageListener)
+            binding.carouselView.pageCount = imageUriList.size
+        }
+
+        binding.carouselView.currentItem
 
         binding.mapImage.setOnClickListener {
 //            go google map app
@@ -96,10 +105,10 @@ class HomeItemFragment : Fragment() {
         binding.disActiveBtn.setOnClickListener {
 //            disactive the home
             val alertDialog = AlertDialog.Builder(requireContext())
-            val dialog = alertDialog!!.create()
+            val dialog = alertDialog.create()
             dialog.setCancelable(false)
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             val dialogView: View = layoutInflater.inflate(
                 R.layout.check_dialog,
                 null,
@@ -120,6 +129,7 @@ class HomeItemFragment : Fragment() {
                             myDialog.dismissDialog()
                         }
                         .addOnFailureListener { e ->
+                            requireContext().showToast(e.message.toString())
                             myDialog.dismissDialog()
                         }
                 }
@@ -133,10 +143,10 @@ class HomeItemFragment : Fragment() {
         binding.deleteBtn.setOnClickListener {
 //            delete the home
             val alertDialog = AlertDialog.Builder(requireContext())
-            val dialog = alertDialog!!.create()
+            val dialog = alertDialog.create()
             dialog.setCancelable(false)
-            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT));
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
             val dialogView: View = layoutInflater.inflate(
                 R.layout.check_dialog,
                 null,
@@ -149,6 +159,7 @@ class HomeItemFragment : Fragment() {
                 dialog.dismiss()
                 if (this::advertise.isInitialized) {
                     myDialog.showDialog()
+                    deleteImages(0)
                     firestore.collection("elonlar")
                         .document("${advertise.phoneNumber}${advertise.createdTime}")
                         .delete()
@@ -168,6 +179,18 @@ class HomeItemFragment : Fragment() {
             }
             dialog.show()
         }
+
+        binding.carouselView.setImageClickListener { position ->
+            if (imageUriList.size > 0 && imageDownloaded) {
+                val bundle = Bundle()
+                bundle.putString("date", date)
+                bundle.putString("phoneNumber", phoneNumber)
+                bundle.putInt("position", position)
+                Permanent.imageUriList.clear()
+                Permanent.imageUriList.addAll(imageUriList)
+                findNavController().navigate(R.id.imagePagerFragment, bundle)
+            }
+        }
     }
 
     private fun getImageUriList(i: Int) {
@@ -177,8 +200,18 @@ class HomeItemFragment : Fragment() {
             imageUriList.add(it)
             getImageUriList(1 + i)
         }.addOnFailureListener {
+            imageDownloaded = true
             binding.carouselView.setImageListener(imageListener)
             binding.carouselView.pageCount = imageUriList.size
+        }
+    }
+
+    private fun deleteImages(i: Int) {
+        //        get image uri list from storage
+        val listRef = storage.reference.child("elonImages/${phoneNumber}${date}/${i}.jpg")
+        listRef.delete().addOnSuccessListener {
+            deleteImages(1 + i)
+        }.addOnFailureListener {
         }
     }
 
@@ -223,6 +256,7 @@ class HomeItemFragment : Fragment() {
             .error(R.drawable.errorplaceholder).into(imageView)
     }
 
+    @SuppressLint("SetTextI18n")
     private fun setView() {
         binding.createdTimeTv.text = advertise.createdTime
         binding.userPhoneNumber.text = advertise.phoneNumber
@@ -324,7 +358,7 @@ class HomeItemFragment : Fragment() {
         for (i in listNear.indices) {
             if (advertise.checkedItemsNear!![i]) {
                 near += if (near.length <= 12) {
-                    "${listNear[i]}"
+                    listNear[i]
                 } else {
                     ",${listNear[i]}"
                 }
@@ -342,30 +376,38 @@ class HomeItemFragment : Fragment() {
     private fun getRegion() {
 
 //        get location name
-
-        val geocoder = Geocoder(requireContext(), Locale.getDefault())
-        val addresses: List<Address> =
-            geocoder.getFromLocation(
-                advertise.geoPoint!!.latitude,
-                advertise.geoPoint!!.longitude,
-                1
-            )
-        var cityName: String? = ""
-        var stateName: String? = ""
-        var countryName: String? = ""
         try {
-            cityName = addresses[0].getAddressLine(0)
-            stateName = addresses[0].getAddressLine(1)
-            countryName = addresses[0].getAddressLine(2)
+            val geocoder = Geocoder(requireContext(), Locale.getDefault())
+            val addresses: List<Address> =
+                geocoder.getFromLocation(
+                    advertise.geoPoint!!.latitude,
+                    advertise.geoPoint!!.longitude,
+                    1
+                )
+            var cityName: String? = ""
+            var stateName: String? = ""
+            var countryName: String? = ""
+            try {
+                cityName = addresses[0].getAddressLine(0)
+                stateName = addresses[0].getAddressLine(1)
+                countryName = addresses[0].getAddressLine(2)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+            if (!cityName.isNullOrBlank()) {
+                binding.addressRegionTv.text = cityName
+            } else if (!stateName.isNullOrBlank()) {
+                binding.addressRegionTv.text = stateName
+            } else if (!countryName.isNullOrBlank()) {
+                binding.addressRegionTv.text = countryName
+            }
         } catch (e: Exception) {
             e.printStackTrace()
         }
-        if (!cityName.isNullOrBlank()) {
-            binding.addressRegionTv.text = cityName
-        } else if (!stateName.isNullOrBlank()) {
-            binding.addressRegionTv.text = stateName
-        } else if (!countryName.isNullOrBlank()) {
-            binding.addressRegionTv.text = countryName
-        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/purple_700"
+    tools:context=".ui.gallery._homeInfo.ImagePagerFragment">
+
+    <ImageView
+        android:id="@+id/back_img"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/download_img"
+        android:layout_width="@dimen/_20sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_download"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.synnapps.carouselview.CarouselView
+        android:id="@+id/carouselView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        app:autoPlay="false"
+        app:fillColor="#FFFFFFFF"
+        app:layout_constraintBottom_toTopOf="@+id/call_btn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/back_img"
+        app:pageColor="#00000000"
+        app:radius="6dp"
+        app:strokeColor="#FF777777"
+        app:strokeWidth="2dp" />
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/current_page_tv"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginBottom="@dimen/_8sdp"-->
+    <!--        android:fontFamily="@font/poppins_medium"-->
+    <!--        android:text="1"-->
+    <!--        android:textColor="@color/white"-->
+    <!--        android:textSize="@dimen/_12sdp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/call_btn"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/line_layout"-->
+    <!--        app:layout_constraintHorizontal_chainStyle="packed"-->
+    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <!--    <LinearLayout-->
+    <!--        android:id="@+id/line_layout"-->
+    <!--        android:layout_width="@dimen/_25sdp"-->
+    <!--        android:layout_height="0.8dp"-->
+    <!--        android:layout_marginStart="@dimen/_8sdp"-->
+    <!--        android:layout_marginEnd="@dimen/_8sdp"-->
+    <!--        android:background="@color/white"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/max_page_tv"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/max_page_tv"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/current_page_tv"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/current_page_tv" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/max_page_tv"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginBottom="@dimen/_8sdp"-->
+    <!--        android:fontFamily="@font/poppins_medium"-->
+    <!--        android:text="4"-->
+    <!--        android:textColor="@color/white"-->
+    <!--        android:textSize="@dimen/_12sdp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/call_btn"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toEndOf="@+id/line_layout" />-->
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/call_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginHorizontal="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_3sdp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/qo_ng_iroq_qilish"
+        android:textAllCaps="false"
+        android:textColor="@color/text_color"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

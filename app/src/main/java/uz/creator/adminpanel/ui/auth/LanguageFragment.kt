@@ -1,4 +1,4 @@
-package uz.creator.adminpanel.ui
+package uz.creator.adminpanel.ui.auth
 
 import android.content.Context
 import android.content.SharedPreferences

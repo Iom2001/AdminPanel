@@ -52,4 +52,6 @@
     <string name="add_home">Uy qo\'shish</string>
     <string name="uyning_maydoni">Uyning maydoni</string>
     <string name="yashash_maydoni">Yashash maydoni</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="@string/edit_home"
+                android:text="@string/add_home"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -69,6 +69,7 @@
                 android:layout_height="@dimen/_160sdp"
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="16dp"
+                app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="@dimen/_5sdp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -109,13 +110,15 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/type_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                style="@style/Widget.Shrine.AutoTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_16sdp"
-                android:background="@color/white"
                 android:hint="@string/elon_turi"
+                android:textColorHint="@color/text_input_hint_color"
+                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundMode="outline"
                 app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_4sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_4sdp"
@@ -130,18 +133,21 @@
                     android:id="@+id/type"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    android:textColor="@color/text_color" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/home_type_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                style="@style/Widget.Shrine.AutoTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_16sdp"
-                android:background="@color/white"
                 android:hint="@string/uy_turi"
+                android:textColorHint="@color/text_input_hint_color"
+                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundMode="outline"
                 app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_4sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_4sdp"
@@ -156,18 +162,21 @@
                     android:id="@+id/home_type"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    android:textColor="@color/text_color" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/room_count_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                style="@style/Widget.Shrine.AutoTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_16sdp"
-                android:background="@color/white"
                 android:hint="@string/xonalar_soni"
+                android:textColorHint="@color/text_input_hint_color"
+                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundMode="outline"
                 app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_4sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_4sdp"
@@ -182,18 +191,21 @@
                     android:id="@+id/room_count"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    android:textColor="@color/text_color" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/condition_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                style="@style/Widget.Shrine.AutoTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_16sdp"
-                android:background="@color/white"
                 android:hint="@string/bino_holati"
+                android:textColorHint="@color/text_input_hint_color"
+                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundMode="outline"
                 app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_4sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_4sdp"
@@ -208,18 +220,21 @@
                     android:id="@+id/condition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    android:textColor="@color/text_color" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/foundation_layout"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                style="@style/Widget.Shrine.AutoTextInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_16sdp"
-                android:background="@color/white"
                 android:hint="@string/qurilish_turi"
+                android:textColorHint="@color/text_input_hint_color"
+                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundMode="outline"
                 app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_4sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_4sdp"
@@ -234,7 +249,8 @@
                     android:id="@+id/foundation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    android:textColor="@color/text_color" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -246,7 +262,9 @@
                 android:layout_marginHorizontal="@dimen/_16sdp"
                 android:background="@android:color/transparent"
                 android:hint="@string/bino_qavatliligi"
-                app:boxBackgroundColor="@android:color/transparent"
+                android:textColorHint="@color/text_input_hint_color"
+                app:boxBackgroundColor="@color/white"
+                app:boxBackgroundMode="outline"
                 app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_4sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_4sdp"
@@ -263,7 +281,8 @@
                     android:layout_height="wrap_content"
                     android:inputType="number"
                     android:maxLength="3"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:textColor="@color/text_color" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -274,7 +293,8 @@
                 android:layout_marginHorizontal="@dimen/_16sdp"
                 android:background="@android:color/transparent"
                 android:hint="@string/uyning_qavati"
-                app:boxBackgroundColor="@android:color/transparent"
+                android:textColorHint="@color/text_input_hint_color"
+                app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_4sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_4sdp"
@@ -291,7 +311,8 @@
                     android:layout_height="wrap_content"
                     android:inputType="number"
                     android:maxLength="3"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:textColor="@color/text_color" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -302,7 +323,8 @@
                 android:layout_marginHorizontal="@dimen/_16sdp"
                 android:background="@android:color/transparent"
                 android:hint="@string/uyning_maydoni"
-                app:boxBackgroundColor="@android:color/transparent"
+                android:textColorHint="@color/text_input_hint_color"
+                app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_4sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_4sdp"
@@ -320,7 +342,8 @@
                     android:drawableEnd="@drawable/ic_area"
                     android:inputType="number"
                     android:maxLength="4"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:textColor="@color/text_color" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -329,9 +352,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_16sdp"
-                android:background="@android:color/transparent"
                 android:hint="@string/yashash_maydoni"
-                app:boxBackgroundColor="@android:color/transparent"
+                android:textColorHint="@color/text_input_hint_color"
+                app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_4sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_4sdp"
@@ -349,10 +372,10 @@
                     android:drawableEnd="@drawable/ic_area"
                     android:inputType="number"
                     android:maxLength="4"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:textColor="@color/text_color" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <TextView
                 android:layout_width="match_parent"
@@ -371,9 +394,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_16sdp"
                 android:layout_marginTop="@dimen/_16sdp"
-                android:background="@android:color/transparent"
                 android:hint="@string/uyda_bor"
-                app:boxBackgroundColor="@android:color/transparent"
+                android:textColorHint="@color/text_input_hint_color"
+                app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_4sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_4sdp"
@@ -392,7 +415,8 @@
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:freezesText="true"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    android:textColor="@color/text_color" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -401,9 +425,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_16sdp"
-                android:background="@android:color/transparent"
                 android:hint="@string/yaqinida_joylashgan"
-                app:boxBackgroundColor="@android:color/transparent"
+                android:textColorHint="@color/text_input_hint_color"
+                app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_4sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_4sdp"
@@ -422,7 +446,8 @@
                     android:cursorVisible="false"
                     android:focusable="false"
                     android:freezesText="true"
-                    android:inputType="none" />
+                    android:inputType="none"
+                    android:textColor="@color/text_color" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -453,7 +478,8 @@
                 android:layout_marginTop="@dimen/_16sdp"
                 android:background="@android:color/transparent"
                 android:hint="@string/uy_xaqida_malumot"
-                app:boxBackgroundColor="@android:color/transparent"
+                android:textColorHint="@color/text_input_hint_color"
+                app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_4sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_4sdp"
@@ -469,7 +495,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
-                    android:maxLength="100" />
+                    android:maxLength="100"
+                    android:textColor="@color/text_color" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -481,7 +508,8 @@
                 android:layout_marginTop="@dimen/_16sdp"
                 android:background="@android:color/transparent"
                 android:hint="@string/uyning_manzili"
-                app:boxBackgroundColor="@android:color/transparent"
+                android:textColorHint="@color/text_input_hint_color"
+                app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_4sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_4sdp"
@@ -497,7 +525,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
-                    android:maxLength="100" />
+                    android:maxLength="100"
+                    android:textColor="@color/text_color" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -508,7 +537,8 @@
                 android:layout_marginHorizontal="@dimen/_16sdp"
                 android:background="@android:color/transparent"
                 android:hint="@string/uyning_narxi"
-                app:boxBackgroundColor="@android:color/transparent"
+                android:textColorHint="@color/text_input_hint_color"
+                app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_4sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_4sdp"
@@ -526,7 +556,8 @@
                     android:drawableEnd="@drawable/ic_dollar"
                     android:inputType="number"
                     android:maxLength="8"
-                    android:maxLines="1" />
+                    android:maxLines="1"
+                    android:textColor="@color/text_color" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -537,7 +568,8 @@
                 android:layout_marginHorizontal="@dimen/_16sdp"
                 android:background="@android:color/transparent"
                 android:hint="@string/aloqa_uchun_shaxs_ismi"
-                app:boxBackgroundColor="@android:color/transparent"
+                android:textColorHint="@color/text_input_hint_color"
+                app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_4sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_4sdp"
@@ -553,8 +585,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textShortMessage"
-                    android:maxLength="15"
-                    android:maxLines="1" />
+                    android:maxLength="20"
+                    android:maxLines="1"
+                    android:textColor="@color/text_color" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -565,7 +598,8 @@
                 android:layout_marginHorizontal="@dimen/_16sdp"
                 android:background="@android:color/transparent"
                 android:hint="@string/aloqa_uchun_raqam"
-                app:boxBackgroundColor="@android:color/transparent"
+                android:textColorHint="@color/text_input_hint_color"
+                app:boxBackgroundColor="@color/white"
                 app:boxCornerRadiusBottomEnd="@dimen/_4sdp"
                 app:boxCornerRadiusBottomStart="@dimen/_4sdp"
                 app:boxCornerRadiusTopEnd="@dimen/_4sdp"
@@ -585,7 +619,8 @@
                     android:hint="1234567890"
                     android:inputType="number"
                     android:paddingStart="20dp"
-                    android:paddingEnd="0dp"
+                    android:textColor="@color/text_color"
+                    android:textColorHint="@color/hint_color"
                     app:allowed_chars="1234567890"
                     app:keep_hint="true"
                     app:mask="+998 (##) ###-##-##" />

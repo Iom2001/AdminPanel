@@ -2,9 +2,12 @@ package uz.creator.adminpanel.ui.home._editHome
 
 import android.app.Activity
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
+import android.location.LocationManager
 import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -21,15 +24,15 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.GeoPoint
 import com.google.firebase.storage.FirebaseStorage
 import com.synnapps.carouselview.ImageListener
+import id.zelory.compressor.Compressor
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.runBlocking
 import uz.creator.adminpanel.R
 import uz.creator.adminpanel.databinding.FragmentEditHomeBinding
 import uz.creator.adminpanel.models.Advertise
 import uz.creator.adminpanel.ui.home._addHome.ShareAddressModel
 import uz.creator.adminpanel.ui.home.model.AddressModel
-import uz.creator.adminpanel.utils.CyrillicLatinConverter
-import uz.creator.adminpanel.utils.MyDialog
-import uz.creator.adminpanel.utils.Permanent
-import uz.creator.adminpanel.utils.snackBar
+import uz.creator.adminpanel.utils.*
 import kotlin.collections.ArrayList
 
 class EditHomeFragment : Fragment() {
@@ -180,8 +183,11 @@ class EditHomeFragment : Fragment() {
                 val name = CyrillicLatinConverter.ctl(binding.usernameEditText.text.toString())
                 val homePhone = binding.numberEditText.text.toString()
                 val geoPoint = GeoPoint(addressModel.latitude, addressModel.longitude)
-
-                loadImages(advertise?.createdTime!!)
+                if (isImageListChange) {
+                    runBlocking {
+                        loadImages(advertise?.createdTime!!)
+                    }
+                }
                 val haveList = ArrayList<Boolean>()
                 for (i in checkedItemsHave) {
                     haveList.add(i)
@@ -273,13 +279,28 @@ class EditHomeFragment : Fragment() {
         binding.homeHaveEditText.setText(have)
     }
 
-    private fun loadImages(currentDT: String) {
+    private suspend fun loadImages(currentDT: String) {
 //        get images uri from storage
         for (i in uriList.indices) {
-            storage.getReference("elonImages")
-                .child("${advertise?.phoneNumber}${currentDT}")
-                .child("${i}.jpg")
-                .putFile(uriList[i])
+            coroutineScope {
+                // Default compression
+                storage.getReference("elonImages")
+                    .child("${Permanent.phoneNumber}${currentDT}")
+                    .child("${i}.jpg")
+                    .putFile(
+                        Uri.parse(
+                            "file://${
+                                Compressor.compress(
+                                    requireContext(),
+                                    FileUtilsForImage.from(
+                                        context,
+                                        uriList[i]
+                                    )
+                                )
+                            }"
+                        )
+                    )
+            }
         }
         if (isImageListChange && lastImageListCount > uriList.size) {
             for (i in uriList.size until lastImageListCount) {

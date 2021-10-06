@@ -1,4 +1,4 @@
-package uz.creator.adminpanel.ui
+package uz.creator.adminpanel.ui.gallery
 
 import android.os.Bundle
 import android.util.Log
@@ -18,6 +18,7 @@ import uz.creator.adminpanel.adapters.GalleryAdapter
 import uz.creator.adminpanel.databinding.FragmentGaleryBinding
 import uz.creator.adminpanel.models.Advertise
 import uz.creator.adminpanel.models.FilterModel
+import uz.creator.adminpanel.ui.gallery._filterHome.ShareFilterModel
 import kotlin.collections.ArrayList
 
 class GalleryFragment : Fragment() {
@@ -61,7 +62,7 @@ class GalleryFragment : Fragment() {
                 var bundle = Bundle()
                 bundle.putString("date", advertise.createdTime)
                 bundle.putString("phoneNumber", advertise.phoneNumber)
-                findNavController().navigate(R.id.homeItemFragment, bundle)
+                findNavController().navigate(R.id.homeInfoFragment, bundle)
             }
         })
         binding.rvGallery.setHasFixedSize(true)

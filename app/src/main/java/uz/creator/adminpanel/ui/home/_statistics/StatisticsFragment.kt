@@ -1,4 +1,4 @@
-package uz.creator.adminpanel.ui.home
+package uz.creator.adminpanel.ui.home._statistics
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -36,7 +36,7 @@ class StatisticsFragment : Fragment() {
                     var bundle = Bundle()
                     bundle.putString("date", advertise.createdTime)
                     bundle.putString("phoneNumber", advertise.phoneNumber)
-                    findNavController().navigate(R.id.homeItemFragment, bundle)
+                    findNavController().navigate(R.id.homeInfoFragment, bundle)
                 }
             })
         myDialog = MyDialog(requireContext())

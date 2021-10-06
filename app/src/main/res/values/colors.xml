@@ -17,5 +17,7 @@
     <color name="back_color">#F4FBFF</color>
     <color name="back_color_pink">#FFE4E4</color>
     <color name="red">#F44336</color>
+    <color name="hint_color">#36000000</color>
+    <color name="text_input_hint_color">#94000000</color>
 
 </resources>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/back_color"
-    tools:context=".ui.home.StatisticsFragment">
+    tools:context=".ui.home._statistics.StatisticsFragment">
 
     <!--    <androidx.appcompat.widget.Toolbar-->
     <!--        android:id="@+id/toolbar"-->

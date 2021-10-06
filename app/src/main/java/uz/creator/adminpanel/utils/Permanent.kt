@@ -1,5 +1,7 @@
 package uz.creator.adminpanel.utils
 
+import android.net.Uri
+
 object Permanent {
 
     var isKiril = false
@@ -13,5 +15,7 @@ object Permanent {
 
     const val PREF_PHONE_NAME = "isPhoneModePref"
     const val PHONE_KEY = "isPhoneModeKey"
+
+    val imageUriList = ArrayList<Uri>()
 
 }

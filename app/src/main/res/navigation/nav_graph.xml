@@ -29,7 +29,7 @@
     </fragment>
     <fragment
         android:id="@+id/galeryFragment"
-        android:name="uz.creator.adminpanel.ui.GalleryFragment"
+        android:name="uz.creator.adminpanel.ui.gallery.GalleryFragment"
         android:label="fragment_galery"
         tools:layout="@layout/fragment_galery">
         <action
@@ -37,7 +37,7 @@
             app:destination="@id/filterFragment" />
         <action
             android:id="@+id/action_galeryFragment_to_homeItemFragment"
-            app:destination="@id/homeItemFragment" />
+            app:destination="@id/homeInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -88,19 +88,19 @@
         tools:layout="@layout/fragment_map" />
     <fragment
         android:id="@+id/addUserFragment"
-        android:name="uz.creator.adminpanel.ui.AddUserFragment"
+        android:name="uz.creator.adminpanel.ui.home._addUser.AddUserFragment"
         android:label="fragment_add_user"
         tools:layout="@layout/fragment_add_user" />
     <fragment
         android:id="@+id/filterFragment"
-        android:name="uz.creator.adminpanel.ui.FilterFragment"
+        android:name="uz.creator.adminpanel.ui.gallery._filterHome.FilterFragment"
         android:label="fragment_filter"
         tools:layout="@layout/fragment_filter" />
     <fragment
-        android:id="@+id/homeItemFragment"
-        android:name="uz.creator.adminpanel.ui.HomeItemFragment"
+        android:id="@+id/homeInfoFragment"
+        android:name="uz.creator.adminpanel.ui.gallery._homeInfo.HomeInfoFragment"
         android:label="fragment_home_item"
-        tools:layout="@layout/fragment_home_item" />
+        tools:layout="@layout/fragment_home_info" />
     <fragment
         android:id="@+id/editHomeFragment"
         android:name="uz.creator.adminpanel.ui.home._editHome.EditHomeFragment"
@@ -122,22 +122,27 @@
         tools:layout="@layout/fragment_add_elon" />
     <fragment
         android:id="@+id/statisticsFragment"
-        android:name="uz.creator.adminpanel.ui.home.StatisticsFragment"
+        android:name="uz.creator.adminpanel.ui.home._statistics.StatisticsFragment"
         android:label="fragment_statistics"
         tools:layout="@layout/fragment_statistics" />
     <fragment
         android:id="@+id/editPinFragment"
-        android:name="uz.creator.adminpanel.ui.editPin.EditPinFragment"
+        android:name="uz.creator.adminpanel.ui.home._editPin.EditPinFragment"
         android:label="fragment_edit_pin"
         tools:layout="@layout/fragment_edit_pin" />
     <fragment
         android:id="@+id/languageFragment"
-        android:name="uz.creator.adminpanel.ui.LanguageFragment"
+        android:name="uz.creator.adminpanel.ui.auth.LanguageFragment"
         android:label="fragment_language"
         tools:layout="@layout/fragment_language">
         <action
             android:id="@+id/action_languageFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/imagePagerFragment"
+        android:name="uz.creator.adminpanel.ui.gallery._homeInfo.ImagePagerFragment"
+        android:label="fragment_image_pager"
+        tools:layout="@layout/fragment_image_pager" />
 
 </navigation>

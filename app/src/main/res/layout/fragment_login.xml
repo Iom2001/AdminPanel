@@ -64,6 +64,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="2dp"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@+id/number_card"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,9 +79,11 @@
             android:gravity="center_vertical"
             android:hint="@string/username"
             android:inputType="text"
-            android:maxLength="15"
+            android:maxLength="20"
             android:paddingStart="20dp"
-            android:paddingEnd="20dp" />
+            android:paddingEnd="20dp"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_color" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
@@ -89,6 +92,7 @@
         android:layout_height="55dp"
         android:layout_marginStart="2dp"
         android:layout_marginEnd="2dp"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@+id/password_card"
         app:layout_constraintEnd_toEndOf="parent"
@@ -115,6 +119,8 @@
             android:hint="1234567890"
             android:inputType="number"
             android:paddingStart="20dp"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_color"
             app:allowed_chars="1234567890"
             app:keep_hint="true"
             app:mask="+998 (##) ###-##-##" />
@@ -129,6 +135,7 @@
         android:layout_marginStart="2dp"
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="10dp"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="10dp"
         app:layout_constraintBottom_toTopOf="@id/registration_btn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -145,7 +152,9 @@
             android:inputType="numberPassword"
             android:maxLength="4"
             android:paddingStart="20dp"
-            android:paddingEnd="20dp" />
+            android:paddingEnd="20dp"
+            android:textColor="@color/text_color"
+            android:textColorHint="@color/hint_color" />
     </androidx.cardview.widget.CardView>
 
     <Button

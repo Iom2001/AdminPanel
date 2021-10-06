@@ -1,4 +1,4 @@
-package uz.creator.adminpanel.ui.editPin
+package uz.creator.adminpanel.ui.home._editPin
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
